@@ -1,4 +1,3 @@
-from logging import exception
 import openpyxl
 from pathlib import Path
 import argparse
@@ -62,7 +61,7 @@ if __name__ == "__main__":
         if Path(path).match('*.xls'):
             userCmd = None
             while userCmd == None:
-                userCmd = input('是否将xls文件转为xlsx文件？请输入yes[y] or no[N]:\n')
+                userCmd = input('是否将xls文件转为xlsx文件？请输入yes[Y] or no[N]:\n')
                 try:
                     if userCmd not in {'Y', 'N'}:
                         userCmd = None
@@ -75,13 +74,15 @@ if __name__ == "__main__":
             else:
                 raise ValueError
 
+        font = Font(underline='single', color='FF0000FF')
         wb = openpyxl.load_workbook(Path(path))
-        wsWorkSheetList = wb.sheetnames[1:]
+
+        if '目录' not in [i.title for i in wb]:
+            wb.create_sheet('目录', 0)
         wsList = wb['目录']
 
-        font = Font(underline='single', color='FF0000FF')
-
         rownum, colnum = 1, 1
+        wsWorkSheetList = [ i.title for i in wb if i.title!='目录']
         wsList.cell(row=rownum, column=colnum, value='目 录')
         for i in wsWorkSheetList:
             rownum += 1
@@ -92,7 +93,6 @@ if __name__ == "__main__":
             wb[i]['A3'].font = font
             wb[i]['A3'].hyperlink = Hyperlink(
                 ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
-
         wb.save(path)
         wb.close()
     except ValueError:
