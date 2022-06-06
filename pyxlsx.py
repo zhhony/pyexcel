@@ -80,11 +80,11 @@ if __name__ == "__main__":
         if '目录' not in [i.title for i in wb]:
             wb.create_sheet('目录', 0)
         else:
-            wb['目录'].delete_cols(1,2)
+            wb['目录'].delete_cols(1, 2)
         wsList = wb['目录']
 
         rownum, colnum = 1, 1
-        wsWorkSheetList = [ i.title for i in wb if i.title!='目录']
+        wsWorkSheetList = [i.title for i in wb if i.title != '目录']
         wsList.cell(row=rownum, column=colnum, value='目 录')
         for i in wsWorkSheetList:
             rownum += 1
