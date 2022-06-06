@@ -43,10 +43,9 @@ class ValueError(Exception):
 if __name__ == "__main__":
     try:
         parser = argparse.ArgumentParser()
-
         parser.add_argument('-p', '--path', help='excel所在的路径，默认放在当前用户文件夹下面')
-        args = parser.parse_args()
 
+        args = parser.parse_args()
         path = args.path
 
         # 路径合法性校验
