@@ -79,6 +79,8 @@ if __name__ == "__main__":
 
         if '目录' not in [i.title for i in wb]:
             wb.create_sheet('目录', 0)
+        else:
+            wb['目录'].delete_cols(1,2)
         wsList = wb['目录']
 
         rownum, colnum = 1, 1
