@@ -7,10 +7,5 @@
 ```powershell
 # 确认好系统里已安装Python。用[python]命令运行pyxlsx.py脚本，并输入参数p
 python pyxlsx.py -p [文件所在路径]
+# 范例 python pyxlsx.py -p C:\Users\zhhon\Desktop\abc.xlsx
 ```
-
-范例：
-
-比如我将脚本文件pyxlsx.py放入我的电脑桌面，我获知此脚本文件的路径是 `C:\Users\zhhony\Desktopc:\windows\zhhony\desktop\` 。
-
-> windows系统获取任何文件的路径都可以通过在文件图标上通过 `shift+鼠标右键`->`复制文件地址`的方式获取。
