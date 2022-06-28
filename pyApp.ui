@@ -830,7 +830,7 @@ QPushButton:pressed {
                       <property name="styleSheet">
                        <string notr="true">#DirBuid .QLineEdit {
     font: 8pt &quot;微软雅黑&quot;;
-    color: rgb(100, 100, 100);
+    color: rgb(170, 170, 170);
     background-color: rgb(33, 37, 43);
     border-radius: 5px;
     border: 2px solid rgb(33, 37, 43);
