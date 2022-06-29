@@ -98,6 +98,10 @@ if __name__ == "__main__":
             cmdOpenExcelFile)  # 监控openFilesButton的click动作
         ui.commitButton.clicked.connect(
             cmdCommitFile)  # 监控commitButton的click动作
+        ui.toggleButton.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(1))  # 监控toggleButton的click动作
+        ui.btn_home.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(0))  # 监控btn_home的click动作
 
         sys.exit(app.exec())
 

@@ -16,6 +16,7 @@
   <widget class="QWidget" name="StyleSheet">
    <property name="font">
     <font>
+     <family>微软雅黑</family>
      <pointsize>10</pointsize>
      <italic>false</italic>
      <bold>false</bold>
@@ -105,7 +106,7 @@
 
 </string>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_9">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -259,10 +260,10 @@
                 </size>
                </property>
                <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
+                <cursorShape>ArrowCursor</cursorShape>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-image: url(:/Icon/images/icons/icon_menu.png);</string>
+                <string notr="true">background-image: url(:/Icon/images/icons/cil-home.png);</string>
                </property>
                <property name="text">
                 <string>HOME</string>
@@ -311,7 +312,7 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-image: url(:/Icon/images/icons/cil-home.png);</string>
+                <string notr="true">background-image: url(:/Icon/images/icons/cil-menu.png);</string>
                </property>
                <property name="text">
                 <string>建立目录</string>
@@ -441,6 +442,7 @@
                </property>
                <property name="font">
                 <font>
+                 <family>微软雅黑</family>
                  <pointsize>10</pointsize>
                  <italic>false</italic>
                  <bold>false</bold>
@@ -529,7 +531,9 @@ background-color: rgb(40, 44, 52);</string>
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="styleSheet">
-                <string notr="true">QPushButton {
+                <string notr="true">
+
+QPushButton {
 	border: 2px solid rgb(52, 59, 72);
 	border-radius: 5px;	
 	background-color: rgb(52, 59, 72);
@@ -542,6 +546,9 @@ QPushButton:pressed {
 	background-color: rgb(35, 40, 49);
 	border: 2px solid rgb(43, 50, 61);
 }</string>
+               </property>
+               <property name="currentIndex">
+                <number>1</number>
                </property>
                <widget class="QWidget" name="DirBuid">
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -980,7 +987,128 @@ QTableWidget::horizontalHeader {
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="whatever"/>
+               <widget class="QWidget" name="Home">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="HomeIcon">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-image: url(:/Image/images/images/100678278.png);
+background-position: center bottom;
+background-repeat: no-repeat;</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="HomeMid">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+color: rgb(170, 170,170);
+font: 8pt &quot;微软雅黑&quot;;
+}</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_11">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label">
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(170, 170,170);
+font: 8pt &quot;微软雅黑&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>咳咳，感觉这里应该需要一段话</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_3">
+                      <property name="text">
+                       <string>个人Git主页：https://github.com/zhhony</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="HomeText">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </widget>
              </item>
             </layout>

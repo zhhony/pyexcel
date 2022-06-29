@@ -30,6 +30,7 @@ class Ui_MainWindow(object):
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         font = QFont()
+        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -117,10 +118,10 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.horizontalLayout = QHBoxLayout(self.StyleSheet)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9 = QVBoxLayout(self.StyleSheet)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.App = QFrame(self.StyleSheet)
         self.App.setObjectName(u"App")
         self.App.setFrameShape(QFrame.StyledPanel)
@@ -164,8 +165,8 @@ class Ui_MainWindow(object):
         self.toggleButton = QPushButton(self.LeftMidMenuHill)
         self.toggleButton.setObjectName(u"toggleButton")
         self.toggleButton.setMinimumSize(QSize(0, 45))
-        self.toggleButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.toggleButton.setStyleSheet(u"background-image: url(:/Icon/images/icons/icon_menu.png);")
+        self.toggleButton.setCursor(QCursor(Qt.ArrowCursor))
+        self.toggleButton.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-home.png);")
 
         self.verticalLayout_5.addWidget(self.toggleButton)
 
@@ -184,7 +185,7 @@ class Ui_MainWindow(object):
         self.btn_home = QPushButton(self.LeftMidMenu)
         self.btn_home.setObjectName(u"btn_home")
         self.btn_home.setMinimumSize(QSize(0, 45))
-        self.btn_home.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-home.png);")
+        self.btn_home.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-menu.png);")
 
         self.verticalLayout_6.addWidget(self.btn_home)
 
@@ -244,6 +245,7 @@ class Ui_MainWindow(object):
         self.toggleLeftBox.setSizePolicy(sizePolicy)
         self.toggleLeftBox.setMinimumSize(QSize(0, 45))
         font1 = QFont()
+        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
         font1.setPointSize(10)
         font1.setBold(False)
         font1.setItalic(False)
@@ -283,7 +285,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.RightMidCont)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setStyleSheet(u"QPushButton {\n"
+        self.stackedWidget.setStyleSheet(u"\n"
+"\n"
+"QPushButton {\n"
 "	border: 2px solid rgb(52, 59, 72);\n"
 "	border-radius: 5px;	\n"
 "	background-color: rgb(52, 59, 72);\n"
@@ -507,9 +511,63 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(self.DirBuidDwn)
 
         self.stackedWidget.addWidget(self.DirBuid)
-        self.whatever = QWidget()
-        self.whatever.setObjectName(u"whatever")
-        self.stackedWidget.addWidget(self.whatever)
+        self.Home = QWidget()
+        self.Home.setObjectName(u"Home")
+        self.Home.setStyleSheet(u"")
+        self.verticalLayout_10 = QVBoxLayout(self.Home)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.HomeIcon = QFrame(self.Home)
+        self.HomeIcon.setObjectName(u"HomeIcon")
+        self.HomeIcon.setMaximumSize(QSize(16777215, 16777215))
+        self.HomeIcon.setStyleSheet(u"background-image: url(:/Image/images/images/100678278.png);\n"
+"background-position: center bottom;\n"
+"background-repeat: no-repeat;")
+        self.HomeIcon.setFrameShape(QFrame.StyledPanel)
+        self.HomeIcon.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.HomeIcon)
+
+        self.HomeMid = QFrame(self.Home)
+        self.HomeMid.setObjectName(u"HomeMid")
+        self.HomeMid.setMaximumSize(QSize(16777215, 45))
+        self.HomeMid.setStyleSheet(u"QLabel {\n"
+"color: rgb(170, 170,170);\n"
+"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
+"}")
+        self.HomeMid.setFrameShape(QFrame.StyledPanel)
+        self.HomeMid.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.HomeMid)
+        self.verticalLayout_11.setSpacing(0)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.HomeMid)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"color: rgb(170, 170,170);\n"
+"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";")
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_11.addWidget(self.label)
+
+        self.label_3 = QLabel(self.HomeMid)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_11.addWidget(self.label_3)
+
+
+        self.verticalLayout_10.addWidget(self.HomeMid)
+
+        self.HomeText = QFrame(self.Home)
+        self.HomeText.setObjectName(u"HomeText")
+        self.HomeText.setMaximumSize(QSize(16777215, 16777215))
+        self.HomeText.setFrameShape(QFrame.StyledPanel)
+        self.HomeText.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.HomeText)
+
+        self.stackedWidget.addWidget(self.Home)
 
         self.verticalLayout_4.addWidget(self.stackedWidget)
 
@@ -541,13 +599,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.RightBar)
 
 
-        self.horizontalLayout.addWidget(self.App)
+        self.verticalLayout_9.addWidget(self.App)
 
         MainWindow.setCentralWidget(self.StyleSheet)
 
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -594,6 +653,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.commitButton.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u54b3\u54b3\uff0c\u611f\u89c9\u8fd9\u91cc\u5e94\u8be5\u9700\u8981\u4e00\u6bb5\u8bdd", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u4e2a\u4ebaGit\u4e3b\u9875\uff1ahttps://github.com/zhhony", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
     # retranslateUi
 
