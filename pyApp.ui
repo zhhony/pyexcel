@@ -16,7 +16,6 @@
   <widget class="QWidget" name="StyleSheet">
    <property name="font">
     <font>
-     <family>微软雅黑</family>
      <pointsize>10</pointsize>
      <italic>false</italic>
      <bold>false</bold>
@@ -218,18 +217,6 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
-              <widget class="QLabel" name="label">
-               <property name="styleSheet">
-                <string notr="true">
-	color: rgb(100, 100, 100);
-	font: 8pt &quot;微软雅黑&quot;;</string>
-               </property>
-               <property name="text">
-                <string>：大尾巴鱼</string>
-               </property>
-              </widget>
-             </item>
             </layout>
            </widget>
           </item>
@@ -454,7 +441,6 @@
                </property>
                <property name="font">
                 <font>
-                 <family>微软雅黑</family>
                  <pointsize>10</pointsize>
                  <italic>false</italic>
                  <bold>false</bold>
@@ -512,202 +498,6 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item>
-           <widget class="QFrame" name="RightTopBar">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QFrame" name="LeftButtons">
-               <property name="minimumSize">
-                <size>
-                 <width>300</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QFrame" name="rightButtons">
-               <property name="minimumSize">
-                <size>
-                 <width>100</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>100</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_4">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="minimizeAppBtn">
-                  <property name="minimumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Minimize</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="rec.qrc">
-                    <normaloff>:/Icon/images/icons/icon_minimize.png</normaloff>:/Icon/images/icons/icon_minimize.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="maximizeRestoreAppBtn">
-                  <property name="minimumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Maximize</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="rec.qrc">
-                    <normaloff>:/Icon/images/icons/icon_maximize.png</normaloff>:/Icon/images/icons/icon_maximize.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="closeAppBtn">
-                  <property name="minimumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>15</width>
-                    <height>15</height>
-                   </size>
-                  </property>
-                  <property name="toolTip">
-                   <string>Close</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="rec.qrc">
-                    <normaloff>:/Icon/images/icons/icon_close.png</normaloff>:/Icon/images/icons/icon_close.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
           <item>
            <widget class="QFrame" name="RightMidCont">
             <property name="styleSheet">
@@ -998,7 +788,7 @@ QTableWidget::horizontalHeader {
                        <number>9</number>
                       </property>
                       <property name="columnCount">
-                       <number>2</number>
+                       <number>3</number>
                       </property>
                       <attribute name="horizontalHeaderVisible">
                        <bool>false</bool>
@@ -1079,6 +869,7 @@ QTableWidget::horizontalHeader {
                         <set>AlignLeading|AlignVCenter</set>
                        </property>
                       </column>
+                      <column/>
                       <item row="0" column="0">
                        <property name="text">
                         <string/>

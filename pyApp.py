@@ -30,7 +30,6 @@ class Ui_MainWindow(object):
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         font = QFont()
-        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -150,14 +149,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.label = QLabel(self.LeftMidMenuTop)
-        self.label.setObjectName(u"label")
-        self.label.setStyleSheet(u"\n"
-"	color: rgb(100, 100, 100);\n"
-"	font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";")
-
-        self.horizontalLayout_5.addWidget(self.label)
-
 
         self.verticalLayout.addWidget(self.LeftMidMenuTop)
 
@@ -253,7 +244,6 @@ class Ui_MainWindow(object):
         self.toggleLeftBox.setSizePolicy(sizePolicy)
         self.toggleLeftBox.setMinimumSize(QSize(0, 45))
         font1 = QFont()
-        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
         font1.setPointSize(10)
         font1.setBold(False)
         font1.setItalic(False)
@@ -281,74 +271,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.RightTopBar = QFrame(self.RightBar)
-        self.RightTopBar.setObjectName(u"RightTopBar")
-        self.RightTopBar.setMinimumSize(QSize(0, 25))
-        self.RightTopBar.setMaximumSize(QSize(16777215, 25))
-        self.RightTopBar.setFrameShape(QFrame.StyledPanel)
-        self.RightTopBar.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_3 = QHBoxLayout(self.RightTopBar)
-        self.horizontalLayout_3.setSpacing(0)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.LeftButtons = QFrame(self.RightTopBar)
-        self.LeftButtons.setObjectName(u"LeftButtons")
-        self.LeftButtons.setMinimumSize(QSize(300, 25))
-        self.LeftButtons.setMaximumSize(QSize(16777215, 25))
-        self.LeftButtons.setFrameShape(QFrame.StyledPanel)
-        self.LeftButtons.setFrameShadow(QFrame.Raised)
-
-        self.horizontalLayout_3.addWidget(self.LeftButtons)
-
-        self.rightButtons = QFrame(self.RightTopBar)
-        self.rightButtons.setObjectName(u"rightButtons")
-        self.rightButtons.setMinimumSize(QSize(100, 25))
-        self.rightButtons.setMaximumSize(QSize(100, 16777215))
-        self.rightButtons.setFrameShape(QFrame.StyledPanel)
-        self.rightButtons.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.rightButtons)
-        self.horizontalLayout_4.setSpacing(0)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.minimizeAppBtn = QPushButton(self.rightButtons)
-        self.minimizeAppBtn.setObjectName(u"minimizeAppBtn")
-        self.minimizeAppBtn.setMinimumSize(QSize(15, 15))
-        self.minimizeAppBtn.setMaximumSize(QSize(15, 15))
-        icon = QIcon()
-        icon.addFile(u":/Icon/images/icons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimizeAppBtn.setIcon(icon)
-        self.minimizeAppBtn.setIconSize(QSize(20, 20))
-
-        self.horizontalLayout_4.addWidget(self.minimizeAppBtn)
-
-        self.maximizeRestoreAppBtn = QPushButton(self.rightButtons)
-        self.maximizeRestoreAppBtn.setObjectName(u"maximizeRestoreAppBtn")
-        self.maximizeRestoreAppBtn.setMinimumSize(QSize(15, 15))
-        self.maximizeRestoreAppBtn.setMaximumSize(QSize(15, 15))
-        icon1 = QIcon()
-        icon1.addFile(u":/Icon/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximizeRestoreAppBtn.setIcon(icon1)
-        self.maximizeRestoreAppBtn.setIconSize(QSize(20, 20))
-
-        self.horizontalLayout_4.addWidget(self.maximizeRestoreAppBtn)
-
-        self.closeAppBtn = QPushButton(self.rightButtons)
-        self.closeAppBtn.setObjectName(u"closeAppBtn")
-        self.closeAppBtn.setMinimumSize(QSize(15, 15))
-        self.closeAppBtn.setMaximumSize(QSize(15, 15))
-        icon2 = QIcon()
-        icon2.addFile(u":/Icon/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeAppBtn.setIcon(icon2)
-        self.closeAppBtn.setIconSize(QSize(20, 20))
-
-        self.horizontalLayout_4.addWidget(self.closeAppBtn)
-
-
-        self.horizontalLayout_3.addWidget(self.rightButtons)
-
-
-        self.verticalLayout_2.addWidget(self.RightTopBar)
-
         self.RightMidCont = QFrame(self.RightBar)
         self.RightMidCont.setObjectName(u"RightMidCont")
         self.RightMidCont.setStyleSheet(u"border-top: 0px solid rgb(40, 44, 52);\n"
@@ -437,9 +359,9 @@ class Ui_MainWindow(object):
         self.openFilesButton.setMinimumSize(QSize(100, 30))
         self.openFilesButton.setMaximumSize(QSize(150, 30))
         self.openFilesButton.setStyleSheet(u"")
-        icon3 = QIcon()
-        icon3.addFile(u":/Icon/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.openFilesButton.setIcon(icon3)
+        icon = QIcon()
+        icon.addFile(u":/Icon/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.openFilesButton.setIcon(icon)
 
         self.gridLayout.addWidget(self.openFilesButton, 1, 2, 1, 1)
 
@@ -460,8 +382,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.tableWidget = QTableWidget(self.DirBuidDwn)
-        if (self.tableWidget.columnCount() < 2):
-            self.tableWidget.setColumnCount(2)
+        if (self.tableWidget.columnCount() < 3):
+            self.tableWidget.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
         __qtablewidgetitem.setTextAlignment(Qt.AlignLeading|Qt.AlignVCenter);
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
@@ -530,7 +452,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setShowGrid(False)
         self.tableWidget.setGridStyle(Qt.SolidLine)
         self.tableWidget.setRowCount(9)
-        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setColumnCount(3)
         self.tableWidget.horizontalHeader().setVisible(False)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(200)
@@ -569,9 +491,9 @@ class Ui_MainWindow(object):
         self.commitButton.setMinimumSize(QSize(100, 30))
         self.commitButton.setMaximumSize(QSize(150, 30))
         self.commitButton.setStyleSheet(u"background-color: rgb(170, 0, 0);")
-        icon4 = QIcon()
-        icon4.addFile(u":/Icon/images/icons/cil-input.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.commitButton.setIcon(icon4)
+        icon1 = QIcon()
+        icon1.addFile(u":/Icon/images/icons/cil-input.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.commitButton.setIcon(icon1)
 
         self.horizontalLayout_8.addWidget(self.commitButton)
 
@@ -633,7 +555,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\uff1a\u5927\u5c3e\u5df4\u9c7c", None))
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"HOME", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
         self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd2", None))
@@ -641,18 +562,6 @@ class Ui_MainWindow(object):
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd4", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd5", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e", None))
-#if QT_CONFIG(tooltip)
-        self.minimizeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
-#endif // QT_CONFIG(tooltip)
-        self.minimizeAppBtn.setText("")
-#if QT_CONFIG(tooltip)
-        self.maximizeRestoreAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Maximize", None))
-#endif // QT_CONFIG(tooltip)
-        self.maximizeRestoreAppBtn.setText("")
-#if QT_CONFIG(tooltip)
-        self.closeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close", None))
-#endif // QT_CONFIG(tooltip)
-        self.closeAppBtn.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u901a\u8fc7\u6253\u5f00\u6309\u94ae\u9009\u62e9\u6587\u4ef6", None))
         self.labelVersion_4.setText("")
         self.openFilesButton.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00", None))
