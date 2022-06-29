@@ -17,11 +17,15 @@ if __name__ == "__main__":
         ui = pyApp.Ui_MainWindow()
         ui.setupUi(MainWindow)
 
-        # 获取Excel路径
-        def getExcelFilePath() -> str:
+        excelFileDir = './'  # 默认的工作目录
+
+        # 获取Excel路径，并修改软件的工作目录
+        def getExcelFilePath(currentWorkDir='./') -> str:
             excelFile = QFileDialog.getOpenFileName(
-                MainWindow, "选择文件", './', '*.xlsx')  # 选择目录，返回选中的路径
+                MainWindow, "选择excel文件", currentWorkDir, '*.xlsx')  # 选择目录，返回选中的路径
             excelFilePath = excelFile[0]
+            global excelFileDir
+            excelFileDir = str(Path(excelFilePath).parent)
             return excelFilePath
 
         # 获取Excel的sheet清单
@@ -34,13 +38,14 @@ if __name__ == "__main__":
         # 定义tableWidget控件的排版方法，此控件9*3
         def gridTableWidget(list: list) -> None:
 
-            def ListIter(list):
+            def _ListIter(list):
                 for i in list:
                     yield i
 
-            listIter = ListIter(list)
-
+            listIter = _ListIter(list)
+            ui.tableWidget.clearContents()
             itemColumn = 0
+
             while itemColumn < 3:
                 itemRow = 0
                 while itemRow < 9:
@@ -53,24 +58,20 @@ if __name__ == "__main__":
                 itemColumn += 1
 
         # 定义openFile按钮的动作
-
         def cmdOpenExcelFile() -> None:
-            excelFilePath = getExcelFilePath()
-            wbSheetsList = getExcelSheetName(excelFilePath)
+            excelFilePath = getExcelFilePath(excelFileDir)  # 获取excel路径
+            wbSheetsList = getExcelSheetName(excelFilePath)  # 获取excel的sheet清单
 
-            ui.lineEdit.setText(excelFilePath)  # 将路径写入lineEdit
-
-            # 将sheet名字写入tableWidget
-            gridTableWidget(wbSheetsList)
+            ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
+            gridTableWidget(wbSheetsList)  # 将sheet清单写入tableWidget
 
         # 定义commitFileCMD按钮的动作
         def cmdCommitFile() -> None:
             font = Font(underline='single', color='FF0000FF')
+            excelFilePath = ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+            wb = openpyxl.load_workbook(Path(excelFilePath))  # 打开文件
 
-            excelFilePath = ui.lineEdit.text()
-            wb = openpyxl.load_workbook(Path(excelFilePath))
-
-            if '目录' not in [i.title for i in wb]:
+            if '目录' not in [i.title for i in wb]:  # 建立空的目录sheet
                 wb.create_sheet('目录', 0)
             else:
                 wb['目录'].delete_cols(1, 2)
@@ -93,8 +94,10 @@ if __name__ == "__main__":
 
         MainWindow.show()
 
-        ui.openFilesButton.clicked.connect(cmdOpenExcelFile)
-        ui.commitButton.clicked.connect(cmdCommitFile)
+        ui.openFilesButton.clicked.connect(
+            cmdOpenExcelFile)  # 监控openFilesButton的click动作
+        ui.commitButton.clicked.connect(
+            cmdCommitFile)  # 监控commitButton的click动作
 
         sys.exit(app.exec())
 
