@@ -12,36 +12,64 @@ import threading
 
 if __name__ == "__main__":
     try:
-
-        font = Font(underline='single', color='FF0000FF')
-
         app = QApplication(sys.argv)
         MainWindow = QMainWindow()
         ui = pyApp.Ui_MainWindow()
         ui.setupUi(MainWindow)
 
-        def getFileName() -> str:
-            FileName = QFileDialog.getOpenFileName(
+        # 获取Excel路径
+        def getExcelFilePath() -> str:
+            excelFile = QFileDialog.getOpenFileName(
                 MainWindow, "选择文件", './', '*.xlsx')  # 选择目录，返回选中的路径
-            ui.lineEdit.setText(FileName[0])
-            return FileName[0]
+            excelFilePath = excelFile[0]
+            return excelFilePath
 
-        def getSheetName(path: str) -> None:
-            global wb
+        # 获取Excel的sheet清单
+        def getExcelSheetName(path: str) -> list:
             wb = openpyxl.load_workbook(Path(path))
-            wbSheets = [i.title for i in wb]
-            row = 0
-            for i in wbSheets:
-                ui.tableWidget.setItem(row, 0, QTableWidgetItem(i))
-                row += 1
-            return None
+            wbSheetsList = [i.title for i in wb]
+            wb.close()
+            return wbSheetsList
 
-        def openFileCMD() -> None:
-            path = getFileName()
-            getSheetName(path)
-            return None
+        # 定义tableWidget控件的排版方法，此控件9*3
+        def gridTableWidget(list: list) -> None:
 
-        def commitFileCMD():
+            def ListIter(list):
+                for i in list:
+                    yield i
+
+            listIter = ListIter(list)
+
+            itemColumn = 0
+            while itemColumn < 3:
+                itemRow = 0
+                while itemRow < 9:
+                    try:
+                        ui.tableWidget.setItem(
+                            itemRow, itemColumn, QTableWidgetItem(next(listIter)))
+                        itemRow += 1
+                    except StopIteration:
+                        return None
+                itemColumn += 1
+
+        # 定义openFile按钮的动作
+
+        def cmdOpenExcelFile() -> None:
+            excelFilePath = getExcelFilePath()
+            wbSheetsList = getExcelSheetName(excelFilePath)
+
+            ui.lineEdit.setText(excelFilePath)  # 将路径写入lineEdit
+
+            # 将sheet名字写入tableWidget
+            gridTableWidget(wbSheetsList)
+
+        # 定义commitFileCMD按钮的动作
+        def cmdCommitFile() -> None:
+            font = Font(underline='single', color='FF0000FF')
+
+            excelFilePath = ui.lineEdit.text()
+            wb = openpyxl.load_workbook(Path(excelFilePath))
+
             if '目录' not in [i.title for i in wb]:
                 wb.create_sheet('目录', 0)
             else:
@@ -60,12 +88,14 @@ if __name__ == "__main__":
                 wb[i]['A3'].font = font
                 wb[i]['A3'].hyperlink = Hyperlink(
                     ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
-            wb.save()
+            wb.save(excelFilePath)
             wb.close()
 
-        ui.openFilesButton.clicked.connect(openFileCMD)
-
         MainWindow.show()
+
+        ui.openFilesButton.clicked.connect(cmdOpenExcelFile)
+        ui.commitButton.clicked.connect(cmdCommitFile)
+
         sys.exit(app.exec())
 
     finally:

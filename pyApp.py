@@ -563,14 +563,12 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_4)
-        self.horizontalLayout_8.setSpacing(6)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(9, 9, 9, 9)
         self.commitButton = QPushButton(self.frame_4)
         self.commitButton.setObjectName(u"commitButton")
         self.commitButton.setMinimumSize(QSize(100, 30))
         self.commitButton.setMaximumSize(QSize(150, 30))
-        self.commitButton.setStyleSheet(u"")
+        self.commitButton.setStyleSheet(u"background-color: rgb(170, 0, 0);")
         icon4 = QIcon()
         icon4.addFile(u":/Icon/images/icons/cil-input.png", QSize(), QIcon.Normal, QIcon.Off)
         self.commitButton.setIcon(icon4)
@@ -686,7 +684,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
-        self.commitButton.setText(QCoreApplication.translate("MainWindow", u"\u63d0\u4ea4", None))
+        self.commitButton.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
     # retranslateUi
 

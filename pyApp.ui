@@ -1151,22 +1151,7 @@ QTableWidget::horizontalHeader {
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0">
-                          <property name="spacing">
-                           <number>6</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>9</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>9</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>9</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>9</number>
-                          </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_8">
                           <item>
                            <widget class="QPushButton" name="commitButton">
                             <property name="minimumSize">
@@ -1182,10 +1167,10 @@ QTableWidget::horizontalHeader {
                              </size>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true"/>
+                             <string notr="true">background-color: rgb(170, 0, 0);</string>
                             </property>
                             <property name="text">
-                             <string>提交</string>
+                             <string>建立目录</string>
                             </property>
                             <property name="icon">
                              <iconset resource="rec.qrc">
