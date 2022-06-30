@@ -20,7 +20,11 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
     QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
+<<<<<<< HEAD
 import modules.rec_rc
+=======
+import rec_rc
+>>>>>>> 8e1fbf1b096f22d490f6a0433d1158ff1b4c7909
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
