@@ -1,8 +1,8 @@
 # pyxlsx自述
 
-# 一、控制台版
+## 一、控制台版
 
-通过pyxlsx.py脚本给Excel文件建立目录，并建立跳转使用的超链接。此脚本目前支持xls及xlsx格式文件。其中，如果文件类型是xls则会被程序转化为xlsx格式文件。
+通过 `scripts/pyxlsx.py`脚本给Excel文件建立目录，并建立跳转使用的超链接。此脚本目前支持xls及xlsx格式文件。其中，如果文件类型是xls则会被程序转化为xlsx格式文件。
 
 可以通过在Windows终端中输入如下命令执行脚本：
 
@@ -12,7 +12,7 @@ python pyxlsx.py -p [文件所在路径]
 # 范例 python pyxlsx.py -p C:\Users\zhhon\Desktop\abc.xlsx
 ```
 
-# 二、桌面版
+## 二、桌面版
 
 为Windows10+平台开发的桌面版应用详见发布页面：
 
@@ -22,7 +22,7 @@ python pyxlsx.py -p [文件所在路径]
 
 ![1656471552311](images/images/1656471552311.png)
 
-# 三、目录逻辑
+## 三、目录逻辑
 
 * 默认会在当前excel文件中新建一个叫做“目录”的sheet，并将所有sheet的超链接按次序，从上到下置入目录sheet的第一列。
 * 为了让链接良好闭环，会默认在所有sheet的[A3]单元格建立返回目录的超链接
