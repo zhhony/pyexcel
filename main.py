@@ -35,7 +35,7 @@ if __name__ == "__main__":
             wb.close()
             return wbSheetsList
 
-        # 定义tableWidget控件的排版方法，此控件9*3
+        # 定义tableWidget控件的排版方法，此控件9*6
         def gridTableWidget(list: list) -> None:
 
             def _ListIter(list):
@@ -46,7 +46,7 @@ if __name__ == "__main__":
             ui.tableWidget.clearContents()
             itemColumn = 0
 
-            while itemColumn < 3:
+            while itemColumn < 6:
                 itemRow = 0
                 while itemRow < 9:
                     try:
