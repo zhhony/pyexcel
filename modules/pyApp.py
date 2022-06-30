@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
     QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
-import modules.rec_rc as rec_rc
+import modules.rec_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -118,10 +118,10 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.verticalLayout_9 = QVBoxLayout(self.StyleSheet)
-        self.verticalLayout_9.setSpacing(0)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_13 = QVBoxLayout(self.StyleSheet)
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.App = QFrame(self.StyleSheet)
         self.App.setObjectName(u"App")
         self.App.setFrameShape(QFrame.StyledPanel)
@@ -300,6 +300,63 @@ class Ui_MainWindow(object):
 "	background-color: rgb(35, 40, 49);\n"
 "	border: 2px solid rgb(43, 50, 61);\n"
 "}")
+        self.Home = QWidget()
+        self.Home.setObjectName(u"Home")
+        self.Home.setStyleSheet(u"")
+        self.verticalLayout_10 = QVBoxLayout(self.Home)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.HomeIcon = QFrame(self.Home)
+        self.HomeIcon.setObjectName(u"HomeIcon")
+        self.HomeIcon.setMaximumSize(QSize(16777215, 16777215))
+        self.HomeIcon.setStyleSheet(u"background-image: url(:/Image/images/images/100678278.png);\n"
+"background-position: center bottom;\n"
+"background-repeat: no-repeat;")
+        self.HomeIcon.setFrameShape(QFrame.StyledPanel)
+        self.HomeIcon.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.HomeIcon)
+
+        self.HomeMid = QFrame(self.Home)
+        self.HomeMid.setObjectName(u"HomeMid")
+        self.HomeMid.setMaximumSize(QSize(16777215, 45))
+        self.HomeMid.setStyleSheet(u"QLabel {\n"
+"color: rgb(170, 170,170);\n"
+"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
+"}")
+        self.HomeMid.setFrameShape(QFrame.StyledPanel)
+        self.HomeMid.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.HomeMid)
+        self.verticalLayout_11.setSpacing(0)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.HomeMid)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"color: rgb(170, 170,170);\n"
+"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";")
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_11.addWidget(self.label)
+
+        self.label_3 = QLabel(self.HomeMid)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_11.addWidget(self.label_3)
+
+
+        self.verticalLayout_10.addWidget(self.HomeMid)
+
+        self.HomeText = QFrame(self.Home)
+        self.HomeText.setObjectName(u"HomeText")
+        self.HomeText.setMaximumSize(QSize(16777215, 16777215))
+        self.HomeText.setFrameShape(QFrame.StyledPanel)
+        self.HomeText.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_10.addWidget(self.HomeText)
+
+        self.stackedWidget.addWidget(self.Home)
         self.DirBuid = QWidget()
         self.DirBuid.setObjectName(u"DirBuid")
         self.verticalLayout_7 = QVBoxLayout(self.DirBuid)
@@ -511,63 +568,58 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(self.DirBuidDwn)
 
         self.stackedWidget.addWidget(self.DirBuid)
-        self.Home = QWidget()
-        self.Home.setObjectName(u"Home")
-        self.Home.setStyleSheet(u"")
-        self.verticalLayout_10 = QVBoxLayout(self.Home)
-        self.verticalLayout_10.setSpacing(0)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.HomeIcon = QFrame(self.Home)
-        self.HomeIcon.setObjectName(u"HomeIcon")
-        self.HomeIcon.setMaximumSize(QSize(16777215, 16777215))
-        self.HomeIcon.setStyleSheet(u"background-image: url(:/Image/images/images/100678278.png);\n"
-"background-position: center bottom;\n"
-"background-repeat: no-repeat;")
-        self.HomeIcon.setFrameShape(QFrame.StyledPanel)
-        self.HomeIcon.setFrameShadow(QFrame.Raised)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.verticalLayout_9 = QVBoxLayout(self.page)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.label_4 = QLabel(self.page)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_10.addWidget(self.HomeIcon)
+        self.verticalLayout_9.addWidget(self.label_4)
 
-        self.HomeMid = QFrame(self.Home)
-        self.HomeMid.setObjectName(u"HomeMid")
-        self.HomeMid.setMaximumSize(QSize(16777215, 45))
-        self.HomeMid.setStyleSheet(u"QLabel {\n"
-"color: rgb(170, 170,170);\n"
-"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
-"}")
-        self.HomeMid.setFrameShape(QFrame.StyledPanel)
-        self.HomeMid.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_11 = QVBoxLayout(self.HomeMid)
-        self.verticalLayout_11.setSpacing(0)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
-        self.label = QLabel(self.HomeMid)
-        self.label.setObjectName(u"label")
-        self.label.setStyleSheet(u"color: rgb(170, 170,170);\n"
-"font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";")
-        self.label.setAlignment(Qt.AlignCenter)
+        self.stackedWidget.addWidget(self.page)
+        self.page_2 = QWidget()
+        self.page_2.setObjectName(u"page_2")
+        self.verticalLayout_14 = QVBoxLayout(self.page_2)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.label_5 = QLabel(self.page_2)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_11.addWidget(self.label)
+        self.verticalLayout_14.addWidget(self.label_5)
 
-        self.label_3 = QLabel(self.HomeMid)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.stackedWidget.addWidget(self.page_2)
+        self.page_3 = QWidget()
+        self.page_3.setObjectName(u"page_3")
+        self.verticalLayout_15 = QVBoxLayout(self.page_3)
+        self.verticalLayout_15.setSpacing(0)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.label_6 = QLabel(self.page_3)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_11.addWidget(self.label_3)
+        self.verticalLayout_15.addWidget(self.label_6)
 
+        self.stackedWidget.addWidget(self.page_3)
+        self.page_4 = QWidget()
+        self.page_4.setObjectName(u"page_4")
+        self.verticalLayout_12 = QVBoxLayout(self.page_4)
+        self.verticalLayout_12.setSpacing(0)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.label_7 = QLabel(self.page_4)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_10.addWidget(self.HomeMid)
+        self.verticalLayout_12.addWidget(self.label_7)
 
-        self.HomeText = QFrame(self.Home)
-        self.HomeText.setObjectName(u"HomeText")
-        self.HomeText.setMaximumSize(QSize(16777215, 16777215))
-        self.HomeText.setFrameShape(QFrame.StyledPanel)
-        self.HomeText.setFrameShadow(QFrame.Raised)
-
-        self.verticalLayout_10.addWidget(self.HomeText)
-
-        self.stackedWidget.addWidget(self.Home)
+        self.stackedWidget.addWidget(self.page_4)
 
         self.verticalLayout_4.addWidget(self.stackedWidget)
 
@@ -599,14 +651,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.RightBar)
 
 
-        self.verticalLayout_9.addWidget(self.App)
+        self.verticalLayout_13.addWidget(self.App)
 
         MainWindow.setCentralWidget(self.StyleSheet)
 
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -621,6 +673,8 @@ class Ui_MainWindow(object):
         self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd4", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd5", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u54b3\u54b3\uff0c\u611f\u89c9\u8fd9\u91cc\u5e94\u8be5\u9700\u8981\u4e00\u6bb5\u8bdd", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u4e2a\u4ebaGit\u4e3b\u9875\uff1ahttps://github.com/zhhony", None))
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u901a\u8fc7\u6253\u5f00\u6309\u94ae\u9009\u62e9\u6587\u4ef6", None))
         self.labelVersion_4.setText("")
         self.openFilesButton.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00", None))
@@ -653,8 +707,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.commitButton.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u54b3\u54b3\uff0c\u611f\u89c9\u8fd9\u91cc\u5e94\u8be5\u9700\u8981\u4e00\u6bb5\u8bdd", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u4e2a\u4ebaGit\u4e3b\u9875\uff1ahttps://github.com/zhhony", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
     # retranslateUi
 

@@ -112,9 +112,17 @@ if __name__ == "__main__":
         ui.commitButton.clicked.connect(
             cmdCommitFile)  # 监控commitButton的click动作
         ui.toggleButton.clicked.connect(
-            lambda: ui.stackedWidget.setCurrentIndex(1))  # 监控toggleButton的click动作
+            lambda: ui.stackedWidget.setCurrentIndex(0))  # 监控toggleButton的click动作
         ui.btn_home.clicked.connect(
-            lambda: ui.stackedWidget.setCurrentIndex(0))  # 监控btn_home的click动作
+            lambda: ui.stackedWidget.setCurrentIndex(1))  # 监控btn_home的click动作
+        ui.btn_widgets.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(2))  # 监控功能2的click动作
+        ui.btn_new.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(3))  # 监控功能3的click动作
+        ui.btn_save.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(4))  # 监控功能4的click动作
+        ui.btn_exit.clicked.connect(
+            lambda: ui.stackedWidget.setCurrentIndex(5))  # 监控功能5的click动作
 
         sys.exit(app.exec())
 
