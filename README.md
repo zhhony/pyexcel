@@ -15,7 +15,8 @@ python pyxlsx.py -p [文件所在路径]
 # 二、桌面版
 
 为Windows10+平台开发的桌面版应用详见发布页面：
-https://github.com/zhhony/pyxlsx/releases
+
+[pyxlsx版本管理页面](https://github.com/zhhony/pyxlsx/releases)
 
 进入建立目录的页签，通过打开按钮指定需要建立目录的excel文件，点击建立目录。
 
