@@ -13,10 +13,17 @@ from typing import *
 # 获取Excel路径，并修改软件的工作目录
 def getExcelFilePath(currentWorkDir='./') -> str:
     excelFile = QFileDialog.getOpenFileName(
-        MainWindow, "选择excel文件", currentWorkDir, 'Excel Files (*.xlsx *.xls)')  # 选择目录，返回选中的路径
-    excelFilePath = excelFile[0]
+        MainWindow, "选择excel文件", currentWorkDir, 'Excel Files (*.xlsx *.xls)')  # 返回选中的路径形成的列表
+    excelFilePath = excelFile[0]  # 取出路径列表中存储的路径
+
     global EXCEL_FILE_DIR
-    EXCEL_FILE_DIR = str(Path(excelFilePath).parent)
+    EXCEL_FILE_DIR = str(Path(excelFilePath).parent)  # 重新设置工作目录
+    global EXCEL_FLAG
+    if Path(excelFilePath).suffix == '.xls':  # 重新设置excel标识
+        EXCEL_FLAG = 0
+    else:
+        EXCEL_FLAG = 1
+
     return excelFilePath
 
 
@@ -72,16 +79,20 @@ def tabRefush():
 
 # 定义openFile按钮的动作
 def cmdOpenExcelFile() -> None:
-    try:
-        excelFilePath = getExcelFilePath(EXCEL_FILE_DIR)  # 获取excel路径
-        wbSheetsList = getExcelSheetName(
-            excelFilePath)  # 获取excel的sheet清单
-    except:
+    excelFilePath = getExcelFilePath(EXCEL_FILE_DIR)  # 获取excel路径
+    if excelFilePath != '':
+        ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
+    else:
         return None
 
-    ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
-    ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
-    gridTableWidget(wbSheetsList)  # 将sheet清单写入tableWidget
+    try:
+        wbSheetsList = getExcelSheetName(
+            excelFilePath)  # 获取excel的sheet清单
+        ui.tableWidget.setColumnCount(
+            len(wbSheetsList)//9+1)  # 根据sheet清单尺寸决定表格尺寸
+        gridTableWidget(wbSheetsList)  # 将sheet清单写入tableWidget
+    except:
+        return None
 
 
 # 定义commitFileCMD按钮的动作
