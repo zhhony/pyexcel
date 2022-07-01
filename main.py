@@ -51,6 +51,11 @@ def gridTableWidget(list: list) -> None:
         itemColumn += 1
 
 
+# 定义获取表格选定内容的方法
+def getTabArray():
+    return [i.text() for i in ui.tableWidget.selectedItems()]
+
+
 # 定义刷新表格区域的方法
 def tabRefush():
     try:
@@ -89,6 +94,11 @@ def cmdCommitFile() -> None:
         except:
             return None
 
+        if getTabArray():
+            wsWorkSheetList =getTabArray()
+        else:
+            wsWorkSheetList = [i.title for i in wb if i.title != '目录']    
+
         if '目录' not in [i.title for i in wb]:  # 建立空的目录sheet
             wb.create_sheet('目录', 0)
         else:
@@ -96,7 +106,6 @@ def cmdCommitFile() -> None:
         wsList = wb['目录']
 
         rownum, colnum = 1, 1
-        wsWorkSheetList = [i.title for i in wb if i.title != '目录']
         wsList.cell(row=rownum, column=colnum, value='目 录')
         for i in wsWorkSheetList:
             rownum += 1
@@ -113,10 +122,12 @@ def cmdCommitFile() -> None:
         QMessageBox.critical(MainWindow, '错误', '未知错误！')
     finally:
         wb.close()
+        getTabArray()
         tabRefush()
         return None
 
 
+# 主程序
 if __name__ == "__main__":
     try:
         excelFileDir = './'  # 默认的工作目录
