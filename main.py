@@ -1,7 +1,6 @@
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from pytz import VERSION
 import modules.pyApp as pyApp
 import sys
 import openpyxl
@@ -133,8 +132,10 @@ if __name__ == "__main__":
     try:
         APP_VERSION = 'v0.3.0'  # 软件版本号
         EXCEL_FILE_DIR = './'  # 默认的工作目录
+
         app = QApplication(sys.argv)
         MainWindow = QMainWindow()
+
         ui = pyApp.Ui_MainWindow()
         ui.setupUi(MainWindow)
         ui.stackedWidget.setCurrentIndex(0)

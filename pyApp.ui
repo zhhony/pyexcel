@@ -16,7 +16,6 @@
   <widget class="QWidget" name="StyleSheet">
    <property name="font">
     <font>
-     <family>微软雅黑</family>
      <pointsize>10</pointsize>
      <italic>false</italic>
      <bold>false</bold>
@@ -527,7 +526,6 @@ QScrollBar::sub-page:vertical {
                </property>
                <property name="font">
                 <font>
-                 <family>微软雅黑</family>
                  <pointsize>10</pointsize>
                  <italic>false</italic>
                  <bold>false</bold>
@@ -631,7 +629,7 @@ QPushButton:pressed {
 }</string>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="Home">
                 <property name="styleSheet">
