@@ -13,7 +13,7 @@ from typing import *
 # 获取Excel路径，并修改软件的工作目录
 def getExcelFilePath(currentWorkDir='./') -> str:
     excelFile = QFileDialog.getOpenFileName(
-        MainWindow, "选择excel文件", currentWorkDir, '*.xlsx')  # 选择目录，返回选中的路径
+        MainWindow, "选择excel文件", currentWorkDir, 'Excel Files (*.xlsx *.xls)')  # 选择目录，返回选中的路径
     excelFilePath = excelFile[0]
     global EXCEL_FILE_DIR
     EXCEL_FILE_DIR = str(Path(excelFilePath).parent)
@@ -132,6 +132,7 @@ if __name__ == "__main__":
     try:
         APP_VERSION = 'v0.3.0'  # 软件版本号
         EXCEL_FILE_DIR = './'  # 默认的工作目录
+        EXCEL_FLAG = None  # excel文件类型的标识，1标识xlsx，0标识xls，None表示未取得excel文件
 
         app = QApplication(sys.argv)
         MainWindow = QMainWindow()
