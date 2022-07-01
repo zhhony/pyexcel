@@ -103,6 +103,7 @@ def cmdCommitFile() -> None:
             excelFilePath = ui.lineEdit.text()  # 读取lineEdit存储的excel路径
             wb = openpyxl.load_workbook(Path(excelFilePath))  # 打开文件
         except:
+            QMessageBox.critical(MainWindow, '错误', '未选择表格！')
             return None
 
         if getTabArray():
@@ -128,14 +129,14 @@ def cmdCommitFile() -> None:
             wb[i]['A3'].hyperlink = Hyperlink(
                 ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
         wb.save(excelFilePath)
+        wb.close()
+        getTabArray()
+        tabRefush()
         QMessageBox.information(MainWindow, '信息', '建立成功！')
     except:
         QMessageBox.critical(MainWindow, '错误', '未知错误！')
     finally:
-        wb.close()
-        getTabArray()
-        tabRefush()
-        return None
+        pass
 
 
 # 主程序
