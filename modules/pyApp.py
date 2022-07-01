@@ -490,6 +490,7 @@ class Ui_MainWindow(object):
 "#DirBuid .QLineEdit:focus {\n"
 "    border: 2px solid rgb(91, 101, 124);\n"
 "}")
+        self.lineEdit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.lineEdit, 1, 1, 1, 1)
 
@@ -760,7 +761,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

@@ -631,7 +631,7 @@ QPushButton:pressed {
 }</string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="Home">
                 <property name="styleSheet">
@@ -857,6 +857,9 @@ font: 8pt &quot;微软雅黑&quot;;</string>
 #DirBuid .QLineEdit:focus {
     border: 2px solid rgb(91, 101, 124);
 }</string>
+                      </property>
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
                       <property name="placeholderText">
                        <string>请通过打开按钮选择文件</string>
