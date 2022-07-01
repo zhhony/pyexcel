@@ -8,7 +8,6 @@ from pathlib import Path
 from openpyxl.worksheet.hyperlink import Hyperlink
 from openpyxl.styles import Font
 from typing import *
-import threading
 
 
 # 获取Excel路径，并修改软件的工作目录
