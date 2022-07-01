@@ -46,9 +46,9 @@ if __name__ == "__main__":
             ui.tableWidget.clearContents()
             itemColumn = 0
 
-            while itemColumn < 6:
+            while itemColumn < ui.tableWidget.columnCount():
                 itemRow = 0
-                while itemRow < 9:
+                while itemRow < ui.tableWidget.rowCount():
                     try:
                         ui.tableWidget.setItem(
                             itemRow, itemColumn, QTableWidgetItem(next(listIter)))
