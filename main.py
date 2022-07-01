@@ -52,6 +52,20 @@ def gridTableWidget(list: list) -> None:
         itemColumn += 1
 
 
+# 定义刷新表格区域的方法
+def tabRefush():
+    try:
+        excelFilePath = ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+        wbSheetsList = getExcelSheetName(excelFilePath)
+        ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
+        gridTableWidget(wbSheetsList)  # 将sheet清单写入tableWidget
+    except:
+        pass
+    finally:
+        pass
+    return None
+
+
 # 定义openFile按钮的动作
 def cmdOpenExcelFile() -> None:
     try:
@@ -100,6 +114,7 @@ def cmdCommitFile() -> None:
         QMessageBox.critical(MainWindow, '错误', '未知错误！')
     finally:
         wb.close()
+        tabRefush()
         return None
 
 
@@ -110,6 +125,7 @@ if __name__ == "__main__":
         MainWindow = QMainWindow()
         ui = pyApp.Ui_MainWindow()
         ui.setupUi(MainWindow)
+        ui.stackedWidget.setCurrentIndex(0)
 
         MainWindow.show()
 
