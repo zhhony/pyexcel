@@ -122,78 +122,90 @@ class Ui_MainWindow(object):
 "    height: 8px;\n"
 "    ma"
                         "rgin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
+"    border-radius: 0px;\n"
 "}\n"
+"\n"
 "QScrollBar::handle:horizontal {\n"
 "    background: rgb(189, 147, 249);\n"
 "    min-width: 25px;\n"
-"	border-radius: 4px\n"
+"    border-radius: 4px\n"
 "}\n"
+"\n"
 "QScrollBar::add-line:horizontal {\n"
 "    border: none;\n"
 "    background: rgb(55, 63, 77);\n"
 "    width: 20px;\n"
-"	border-top-right-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
 "    border-bottom-right-radius: 4px;\n"
 "    subcontrol-position: right;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
+"\n"
 "QScrollBar::sub-line:horizontal {\n"
 "    border: none;\n"
 "    background: rgb(55, 63, 77);\n"
 "    width: 20px;\n"
-"	border-top-left-radius: 4px;\n"
+"    border-top-left-radius: 4px;\n"
 "    border-bottom-left-radius: 4px;\n"
 "    subcontrol-position: left;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
-"QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-"{\n"
-"     background: none;\n"
-"}\n"
-"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-"{\n"
-"     background: none;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-""
-                        "    width: 8px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-" QScrollBar::handle:vertical {	\n"
-"	background: rgb(189, 147, 249);\n"
-"    min-height: 25px;\n"
-"	border-radius: 4px\n"
-" }\n"
-" QScrollBar::add-line:vertical {\n"
-"     border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"     height: 20px;\n"
-"	border-bottom-left-radius: 4px;\n"
-"    border-bottom-right-radius: 4px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-" QScrollBar::sub-line:vertical {\n"
-"	border: none;\n"
-"    background: rgb(55, 63, 77);\n"
-"     height: 20px;\n"
-"	border-top-left-radius: 4px;\n"
-"    border-top-right-radius: 4px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"     background: none;\n"
-" }\n"
 "\n"
-" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"     background: none;\n"
-" }\n"
-"")
+"QScrollBar::up-arrow:horizontal,\n"
+"QScrollBar::down-arrow:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal,\n"
+"QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    border: n"
+                        "one;\n"
+"    background: rgb(52, 59, 72);\n"
+"    width: 8px;\n"
+"    margin: 21px 0 21px 0;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: rgb(189, 147, 249);\n"
+"    min-height: 25px;\n"
+"    border-radius: 4px\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"    border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"    height: 20px;\n"
+"    border-bottom-left-radius: 4px;\n"
+"    border-bottom-right-radius: 4px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"    border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"    height: 20px;\n"
+"    border-top-left-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::up-arrow:vertical,\n"
+"QScrollBar::down-arrow:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical,\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background: n"
+                        "one;\n"
+"}")
         self.verticalLayout_13 = QVBoxLayout(self.StyleSheet)
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
@@ -361,9 +373,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.RightMidCont)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setStyleSheet(u"\n"
-"\n"
-"QPushButton {\n"
+        self.stackedWidget.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(52, 59, 72);\n"
 "	border-radius: 5px;	\n"
 "	background-color: rgb(52, 59, 72);\n"
@@ -524,8 +534,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem = QTableWidgetItem()
         __qtablewidgetitem.setTextAlignment(Qt.AlignLeading|Qt.AlignVCenter);
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        if (self.tableWidget.rowCount() < 9):
-            self.tableWidget.setRowCount(9)
+        if (self.tableWidget.rowCount() < 10):
+            self.tableWidget.setRowCount(10)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
@@ -547,47 +557,57 @@ class Ui_MainWindow(object):
         __qtablewidgetitem10 = QTableWidgetItem()
         self.tableWidget.setItem(0, 0, __qtablewidgetitem10)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setMaximumSize(QSize(16777215, 300))
-        self.tableWidget.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: transparent;\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: rgb(44, 49, 58);\n"
-"	border-bottom: 1px solid rgb(44, 49, 60);\n"
+        self.tableWidget.setMaximumSize(QSize(16777215, 330))
+        self.tableWidget.setStyleSheet(u"QTableWidget {\n"
+"    background-color: transparent;\n"
+"    padding: 10px;\n"
+"    border-radius: 5px;\n"
+"    gridline-color: rgb(44, 49, 58);\n"
+"    border-bottom: 1px solid rgb(44, 49, 60);\n"
 "}\n"
-"QTableWidget::item{\n"
-"	border-color: rgb(44, 49, 60);\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: rgb(44, 49, 60);\n"
+"\n"
+"QTableWidget::item {\n"
+"    border-color: rgb(44, 49, 60);\n"
+"    padding-left: 5px;\n"
+"    padding-right: 5px;\n"
+"    gridline-color: rgb(44, 49, 60);\n"
 "}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(189, 147, 249);\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: rgb(189, 147, 249);\n"
 "}\n"
-"QHeaderView::section{\n"
-"	background-color: rgb(33, 37, 43);\n"
-"	max-width: 30px;\n"
-"	border: 1px solid rgb(44, 49, 58);\n"
-"	border-style: none;\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: rgb(33, 37, 43);\n"
+"    max-width: 30px;\n"
+"    border: 1px solid rgb(44, 49, 58);\n"
+"    border-style: none;\n"
 "    border-bottom: 1px solid rgb(44, 49, 60);\n"
 "    border-right: 1px solid rgb(44, 49, 60);\n"
 "}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: rgb(33, 37, 43);\n"
+"\n"
+"QTableWidget::horizontalHeader {\n"
+"    background-color: rgb(33, 37, 43);\n"
 "}\n"
 "\n"
-"QScrollBar:vertical { background: rgb(52, 59, 72); }\n"
-"QScrollBar:horizontal { background: rgb(52, 59, 72); }\n"
-" ")
+"QScrollBar:vertical {\n"
+"    background: rgb(52, 59, 72);\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    background: rgb(52, 59, 72);\n"
+"}")
         self.tableWidget.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.tableWidget.setAutoScroll(False)
+        self.tableWidget.setAutoScroll(True)
         self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setDragEnabled(False)
         self.tableWidget.setDefaultDropAction(Qt.IgnoreAction)
-        self.tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
-        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.tableWidget.setAlternatingRowColors(False)
+        self.tableWidget.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
         self.tableWidget.setShowGrid(False)
         self.tableWidget.setGridStyle(Qt.SolidLine)
-        self.tableWidget.setRowCount(9)
+        self.tableWidget.setRowCount(10)
         self.tableWidget.setColumnCount(1)
         self.tableWidget.horizontalHeader().setVisible(False)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
@@ -598,24 +618,31 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.tableWidget)
 
-        self.frame = QFrame(self.DirBuidDwn)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(0, 50))
-        self.frame.setMaximumSize(QSize(16777215, 16777215))
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_7 = QHBoxLayout(self.frame)
+        self.frame_5 = QFrame(self.DirBuidDwn)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_8.addWidget(self.frame_5)
+
+        self.DirBuidCMD = QFrame(self.DirBuidDwn)
+        self.DirBuidCMD.setObjectName(u"DirBuidCMD")
+        self.DirBuidCMD.setMinimumSize(QSize(0, 50))
+        self.DirBuidCMD.setMaximumSize(QSize(16777215, 100))
+        self.DirBuidCMD.setFrameShape(QFrame.StyledPanel)
+        self.DirBuidCMD.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.DirBuidCMD)
         self.horizontalLayout_7.setSpacing(0)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.frame_2 = QFrame(self.frame)
+        self.frame_2 = QFrame(self.DirBuidCMD)
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
 
         self.horizontalLayout_7.addWidget(self.frame_2)
 
-        self.frame_4 = QFrame(self.frame)
+        self.frame_4 = QFrame(self.DirBuidCMD)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMaximumSize(QSize(120, 16777215))
         self.frame_4.setFrameShape(QFrame.StyledPanel)
@@ -637,7 +664,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.frame_4)
 
 
-        self.verticalLayout_8.addWidget(self.frame)
+        self.verticalLayout_8.addWidget(self.DirBuidCMD)
 
 
         self.verticalLayout_7.addWidget(self.DirBuidDwn)
@@ -733,7 +760,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
