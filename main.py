@@ -67,6 +67,7 @@ if __name__ == "__main__":
                 return None
 
             ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
+            ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
             gridTableWidget(wbSheetsList)  # 将sheet清单写入tableWidget
 
         # 定义commitFileCMD按钮的动作
