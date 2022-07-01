@@ -1,6 +1,7 @@
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
+from pytz import VERSION
 import modules.pyApp as pyApp
 import sys
 import openpyxl
@@ -15,8 +16,8 @@ def getExcelFilePath(currentWorkDir='./') -> str:
     excelFile = QFileDialog.getOpenFileName(
         MainWindow, "选择excel文件", currentWorkDir, '*.xlsx')  # 选择目录，返回选中的路径
     excelFilePath = excelFile[0]
-    global excelFileDir
-    excelFileDir = str(Path(excelFilePath).parent)
+    global EXCEL_FILE_DIR
+    EXCEL_FILE_DIR = str(Path(excelFilePath).parent)
     return excelFilePath
 
 
@@ -73,7 +74,7 @@ def tabRefush():
 # 定义openFile按钮的动作
 def cmdOpenExcelFile() -> None:
     try:
-        excelFilePath = getExcelFilePath(excelFileDir)  # 获取excel路径
+        excelFilePath = getExcelFilePath(EXCEL_FILE_DIR)  # 获取excel路径
         wbSheetsList = getExcelSheetName(
             excelFilePath)  # 获取excel的sheet清单
     except:
@@ -95,9 +96,9 @@ def cmdCommitFile() -> None:
             return None
 
         if getTabArray():
-            wsWorkSheetList =getTabArray()
+            wsWorkSheetList = getTabArray()
         else:
-            wsWorkSheetList = [i.title for i in wb if i.title != '目录']    
+            wsWorkSheetList = [i.title for i in wb if i.title != '目录']
 
         if '目录' not in [i.title for i in wb]:  # 建立空的目录sheet
             wb.create_sheet('目录', 0)
@@ -130,12 +131,14 @@ def cmdCommitFile() -> None:
 # 主程序
 if __name__ == "__main__":
     try:
-        excelFileDir = './'  # 默认的工作目录
+        APP_VERSION = 'v0.3.0'  # 软件版本号
+        EXCEL_FILE_DIR = './'  # 默认的工作目录
         app = QApplication(sys.argv)
         MainWindow = QMainWindow()
         ui = pyApp.Ui_MainWindow()
         ui.setupUi(MainWindow)
         ui.stackedWidget.setCurrentIndex(0)
+        ui.label_8.setText(APP_VERSION + '  ')
 
         MainWindow.show()
 

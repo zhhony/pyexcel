@@ -733,6 +733,10 @@ class Ui_MainWindow(object):
         self.RightUndBar.setObjectName(u"RightUndBar")
         self.RightUndBar.setMinimumSize(QSize(0, 15))
         self.RightUndBar.setMaximumSize(QSize(16777215, 15))
+        self.RightUndBar.setStyleSheet(u"QLabel{\n"
+"	color: rgb(100, 100, 100);\n"
+"	font: 8pt \"Segoe UI\";\n"
+"}")
         self.RightUndBar.setFrameShape(QFrame.StyledPanel)
         self.RightUndBar.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.RightUndBar)
@@ -741,11 +745,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.label_2 = QLabel(self.RightUndBar)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"\n"
-"	color: rgb(100, 100, 100);\n"
-"	font: 8pt \"Segoe UI\";")
+        self.label_2.setStyleSheet(u"")
 
         self.horizontalLayout_6.addWidget(self.label_2)
+
+        self.label_8 = QLabel(self.RightUndBar)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.horizontalLayout_6.addWidget(self.label_8)
 
 
         self.verticalLayout_2.addWidget(self.RightUndBar)
@@ -813,5 +821,6 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
+        self.label_8.setText("")
     # retranslateUi
 

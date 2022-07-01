@@ -631,7 +631,7 @@ QPushButton:pressed {
 }</string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="Home">
                 <property name="styleSheet">
@@ -1345,6 +1345,12 @@ QScrollBar:horizontal {
               <height>15</height>
              </size>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	color: rgb(100, 100, 100);
+	font: 8pt &quot;Segoe UI&quot;;
+}</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -1370,12 +1376,20 @@ QScrollBar:horizontal {
              <item>
               <widget class="QLabel" name="label_2">
                <property name="styleSheet">
-                <string notr="true">
-	color: rgb(100, 100, 100);
-	font: 8pt &quot;Segoe UI&quot;;</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string> Product by zhhony@126.com</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
