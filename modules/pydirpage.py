@@ -1,3 +1,4 @@
+from xlutils.copy import copy
 import modules.pyappui as pyappui
 import openpyxl
 import xlrd
@@ -9,6 +10,7 @@ from pathlib import Path
 from typing import *
 from openpyxl.worksheet.hyperlink import Hyperlink
 from openpyxl.styles import Font
+from xlwt import Formula
 from py_test_tools import *
 
 
@@ -102,26 +104,32 @@ class DirPage():
 
     # 定义commitFileCMD按钮的动作
     def cmdCommitFile(self) -> None:
+
         if self._EXCEL_FLAG == None:
             print("未选择任何excel对象")
             return None
+
         excelFilePath = self._ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+        excelSheetName = self.getExcelSheetName(excelFilePath)  # 读取sheet列表
+
+        wsWorkSheetList = []  # 存储需要建立目录的sheet列表
+        if self.getTabArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
+            wsWorkSheetList = self.getTabArray()
+        else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
+            wsWorkSheetList = [i for i in excelSheetName if i != '目录']
+
         with open(excelFilePath, 'rb') as f:
             if self._EXCEL_FLAG:
                 wb = openpyxl.load_workbook(f)
-                if self.getTabArray() != []:
-                    wsWorkSheetList = self.getTabArray()
-                else:
-                    wsWorkSheetList = [i.title for i in wb if i.title != '目录']
 
-                if '目录' not in [i.title for i in wb]:  # 建立空的目录sheet
+                if '目录' not in excelSheetName:  # 建立空的目录sheet
                     wb.create_sheet('目录', 0)
-                else:
-                    wb['目录'].delete_cols(1, 2)
+                wb['目录'].delete_cols(1, 2)
                 wsList = wb['目录']
 
                 rownum, colnum = 1, 1
                 wsList.cell(row=rownum, column=colnum, value='目 录')
+
                 for i in wsWorkSheetList:
                     rownum += 1
                     wsList.cell(row=rownum, column=colnum,
@@ -133,9 +141,18 @@ class DirPage():
                     wb[i]['A3'].hyperlink = Hyperlink(
                         ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
                 wb.save(excelFilePath)
-                wb.close()
-                self.getTabArray()
                 self.refTabArray()
                 QMessageBox.information(self._MainWindow, '信息', '建立成功！')
             else:
-                pass
+                wbr = xlrd.open_workbook(file_contents=f.read())
+                wbw = copy(wbr)
+
+                if '目录' not in excelSheetName:  # 建立空的目录sheet
+                    wbw.add_sheet('目录')
+                wb['目录'].delete_cols(1, 2)
+                wsList = wbw.
+
+
+
+
+    #ws.write(1, 1, Formula(r'HYPERLINK("#sheet1!B2";"单元格的名字")'))
