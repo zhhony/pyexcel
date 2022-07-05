@@ -1,4 +1,3 @@
-from . import pyApp
-from . import rec_rc
-from . pyApp import *
+from . pyappui import *
 from . rec_rc import *
+from . pyhomepage import *
