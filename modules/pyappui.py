@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pyApp.ui'
+## Form generated from reading UI file 'pyappui.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.0
 ##
@@ -250,13 +250,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.toggleButton = QPushButton(self.LeftMidMenuHill)
-        self.toggleButton.setObjectName(u"toggleButton")
-        self.toggleButton.setMinimumSize(QSize(0, 45))
-        self.toggleButton.setCursor(QCursor(Qt.ArrowCursor))
-        self.toggleButton.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-home.png);")
+        self.btn_home = QPushButton(self.LeftMidMenuHill)
+        self.btn_home.setObjectName(u"btn_home")
+        self.btn_home.setMinimumSize(QSize(0, 45))
+        self.btn_home.setCursor(QCursor(Qt.ArrowCursor))
+        self.btn_home.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-home.png);")
 
-        self.verticalLayout_5.addWidget(self.toggleButton)
+        self.verticalLayout_5.addWidget(self.btn_home)
 
 
         self.verticalLayout.addWidget(self.LeftMidMenuHill)
@@ -270,40 +270,40 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.btn_home = QPushButton(self.LeftMidMenu)
-        self.btn_home.setObjectName(u"btn_home")
-        self.btn_home.setMinimumSize(QSize(0, 45))
-        self.btn_home.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-menu.png);")
+        self.btn_dir = QPushButton(self.LeftMidMenu)
+        self.btn_dir.setObjectName(u"btn_dir")
+        self.btn_dir.setMinimumSize(QSize(0, 45))
+        self.btn_dir.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-menu.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_home)
+        self.verticalLayout_6.addWidget(self.btn_dir)
 
-        self.btn_widgets = QPushButton(self.LeftMidMenu)
-        self.btn_widgets.setObjectName(u"btn_widgets")
-        self.btn_widgets.setMinimumSize(QSize(0, 45))
-        self.btn_widgets.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-gamepad.png);")
+        self.btn_2 = QPushButton(self.LeftMidMenu)
+        self.btn_2.setObjectName(u"btn_2")
+        self.btn_2.setMinimumSize(QSize(0, 45))
+        self.btn_2.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-gamepad.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_widgets)
+        self.verticalLayout_6.addWidget(self.btn_2)
 
-        self.btn_new = QPushButton(self.LeftMidMenu)
-        self.btn_new.setObjectName(u"btn_new")
-        self.btn_new.setMinimumSize(QSize(0, 45))
-        self.btn_new.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-file.png);")
+        self.btn_3 = QPushButton(self.LeftMidMenu)
+        self.btn_3.setObjectName(u"btn_3")
+        self.btn_3.setMinimumSize(QSize(0, 45))
+        self.btn_3.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-file.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_new)
+        self.verticalLayout_6.addWidget(self.btn_3)
 
-        self.btn_save = QPushButton(self.LeftMidMenu)
-        self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setMinimumSize(QSize(0, 45))
-        self.btn_save.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-save.png);")
+        self.btn_4 = QPushButton(self.LeftMidMenu)
+        self.btn_4.setObjectName(u"btn_4")
+        self.btn_4.setMinimumSize(QSize(0, 45))
+        self.btn_4.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-save.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_save)
+        self.verticalLayout_6.addWidget(self.btn_4)
 
-        self.btn_exit = QPushButton(self.LeftMidMenu)
-        self.btn_exit.setObjectName(u"btn_exit")
-        self.btn_exit.setMinimumSize(QSize(0, 45))
-        self.btn_exit.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-x.png);")
+        self.btn_5 = QPushButton(self.LeftMidMenu)
+        self.btn_5.setObjectName(u"btn_5")
+        self.btn_5.setMinimumSize(QSize(0, 45))
+        self.btn_5.setStyleSheet(u"background-image: url(:/Icon/images/icons/cil-x.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_exit)
+        self.verticalLayout_6.addWidget(self.btn_5)
 
 
         self.verticalLayout.addWidget(self.LeftMidMenu)
@@ -743,17 +743,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setSpacing(0)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.label_2 = QLabel(self.RightUndBar)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"")
+        self.productlab = QLabel(self.RightUndBar)
+        self.productlab.setObjectName(u"productlab")
+        self.productlab.setStyleSheet(u"")
 
-        self.horizontalLayout_6.addWidget(self.label_2)
+        self.horizontalLayout_6.addWidget(self.productlab)
 
-        self.label_8 = QLabel(self.RightUndBar)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.versionlab = QLabel(self.RightUndBar)
+        self.versionlab.setObjectName(u"versionlab")
+        self.versionlab.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.horizontalLayout_6.addWidget(self.label_8)
+        self.horizontalLayout_6.addWidget(self.versionlab)
 
 
         self.verticalLayout_2.addWidget(self.RightUndBar)
@@ -769,7 +769,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -777,12 +777,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"HOME", None))
-        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
-        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd2", None))
-        self.btn_new.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd3", None))
-        self.btn_save.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd4", None))
-        self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd5", None))
+        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"HOME", None))
+        self.btn_dir.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
+        self.btn_2.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd2", None))
+        self.btn_3.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd3", None))
+        self.btn_4.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd4", None))
+        self.btn_5.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd5", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u54b3\u54b3\uff0c\u611f\u89c9\u8fd9\u91cc\u5e94\u8be5\u9700\u8981\u4e00\u6bb5\u8bdd", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u4e2a\u4ebaGit\u4e3b\u9875\uff1ahttps://github.com/zhhony", None))
@@ -820,7 +820,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u7a7a\u767d\u9875\u9762", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
-        self.label_8.setText("")
+        self.productlab.setText(QCoreApplication.translate("MainWindow", u" Product by zhhony@126.com", None))
+        self.versionlab.setText("")
     # retranslateUi
 
