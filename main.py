@@ -14,7 +14,7 @@ if __name__ == "__main__":
     ui = pyappui.Ui_MainWindow()
 
     dirPg = pydirpage.DirPage(MainWindow, ui)  # 定义dirPage窗口类，方便调用目录窗口的方法
-    homePg = pyhomepage.HomePage(MainWindow, ui) # 定义dirHome窗口类，方便调用Home窗口的方法
+    homePg = pyhomepage.HomePage(MainWindow, ui)  # 定义dirHome窗口类，方便调用Home窗口的方法
 
     ui.setupUi(MainWindow)
     ui.stackedWidget.setCurrentIndex(0)  # 将'Home'页设置成stackedwidget的预展示页面
