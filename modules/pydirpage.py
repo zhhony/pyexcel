@@ -16,9 +16,9 @@ class DirPage():
     def __init__(self, MainWindow: QMainWindow, ui: pyappui.Ui_MainWindow) -> None:
         self._EXCEL_FILE_DIR = './'  # 默认的工作目录
         self._EXCEL_FLAG = None  # excel文件类型的标识，1标识xlsx，0标识xls，None表示未取得excel文件
-        self.FONT = Font(underline='single', color='FF0000FF')
-        self.MainWindow = MainWindow
-        self.ui = ui
+        self._FONT = Font(underline='single', color='FF0000FF')
+        self._MainWindow = MainWindow
+        self._ui = ui
 
     # 判断excel是否为xlsx文件
     def isXlsx(self, excelFilePath: str) -> bool:
@@ -35,7 +35,7 @@ class DirPage():
     # 获取Excel路径,并赋给变量工作目录
     def getExcelFilePath(self) -> str:
         excelFile = QFileDialog.getOpenFileName(
-            self.MainWindow, "选择excel文件", self._EXCEL_FILE_DIR, 'Excel Files (*.xlsx *.xls)')  # 返回选中的路径形成的列表
+            self._MainWindow, "选择excel文件", self._EXCEL_FILE_DIR, 'Excel Files (*.xlsx *.xls)')  # 返回选中的路径形成的列表
         self.isXlsx(excelFile[0])
         self._EXCEL_FILE_DIR = str(Path(excelFile[0]).parent)
         return excelFile[0]
@@ -59,14 +59,14 @@ class DirPage():
             for i in list:
                 yield i
         listIter = _ListIter(list)
-        self.ui.tableWidget.clearContents()
+        self._ui.tableWidget.clearContents()
         itemColumn = 0
 
-        while itemColumn < self.ui.tableWidget.columnCount():
+        while itemColumn < self._ui.tableWidget.columnCount():
             itemRow = 0
-            while itemRow < self.ui.tableWidget.rowCount():
+            while itemRow < self._ui.tableWidget.rowCount():
                 try:
-                    self.ui.tableWidget.setItem(
+                    self._ui.tableWidget.setItem(
                         itemRow, itemColumn, QTableWidgetItem(next(listIter)))
                     itemRow += 1
                 except StopIteration:
@@ -75,14 +75,14 @@ class DirPage():
 
     # 定义获取tableWidget控件选定内容的方法
     def getTabArray(self) -> list:
-        return [i.text() for i in self.ui.tableWidget.selectedItems()]
+        return [i.text() for i in self._ui.tableWidget.selectedItems()]
 
     # 定义刷新表格区域的方法
     def refTabArray(self) -> None:
         try:
-            excelFilePath = self.ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+            excelFilePath = self._ui.lineEdit.text()  # 读取lineEdit存储的excel路径
             wbSheetsList = self.getExcelSheetName(excelFilePath)
-            self.ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
+            self._ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
             # 将sheet清单写入tableWidget
             self.gridTableWidget(wbSheetsList)
         except:
@@ -95,7 +95,7 @@ class DirPage():
     def cmdOpenExcelFile(self) -> None:
         excelFilePath = self.getExcelFilePath()  # 获取excel路径
         if excelFilePath != '':
-            self.ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
+            self._ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
         else:
             return None
         self.refTabArray()
@@ -105,7 +105,7 @@ class DirPage():
         if self._EXCEL_FLAG == None:
             print("未选择任何excel对象")
             return None
-        excelFilePath = self.ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+        excelFilePath = self._ui.lineEdit.text()  # 读取lineEdit存储的excel路径
         with open(excelFilePath, 'rb') as f:
             if self._EXCEL_FLAG:
                 wb = openpyxl.load_workbook(f)
@@ -125,17 +125,17 @@ class DirPage():
                 for i in wsWorkSheetList:
                     rownum += 1
                     wsList.cell(row=rownum, column=colnum,
-                                value=i).font = self.FONT
+                                value=i).font = self._FONT
                     wsList.cell(row=rownum, column=colnum).hyperlink = Hyperlink(
                         ref='', location='\'%s\'!A1' % i, tooltip=None, display='%s' % i, id=None)
 
-                    wb[i]['A3'].font = self.FONT
+                    wb[i]['A3'].font = self._FONT
                     wb[i]['A3'].hyperlink = Hyperlink(
                         ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
                 wb.save(excelFilePath)
                 wb.close()
                 self.getTabArray()
                 self.refTabArray()
-                QMessageBox.information(self.MainWindow, '信息', '建立成功！')
+                QMessageBox.information(self._MainWindow, '信息', '建立成功！')
             else:
                 pass
