@@ -2,7 +2,7 @@ from xlutils.copy import copy
 import modules.pyappui as pyappui
 import openpyxl
 import xlrd
-import xlwt
+from win32com import client
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -10,7 +10,6 @@ from pathlib import Path
 from typing import *
 from openpyxl.worksheet.hyperlink import Hyperlink
 from openpyxl.styles import Font
-from xlwt import Formula
 from py_test_tools import *
 
 
@@ -33,6 +32,28 @@ class DirPage():
         else:
             self._EXCEL_FLAG = None
             return None
+
+    # xls转xlsx,输出转化完成后的文件路径
+    def transXlsToXlsx(self, excelFilePath: str) -> str:
+        try:
+            excel = client.gencache.EnsureDispatch('Excel.Application')
+            wb = excel.Workbooks.Open(excelFilePath)
+            wb.SaveAs(excelFilePath + "x", FileFormat=51)
+        finally:
+            wb.Close()
+            excel.Application.Quit()
+        return excelFilePath + "x"
+
+    # xlsx转xls,输出转化完成后的文件路径
+    def transXlsxToXls(self, excelFilePath: str) -> str:
+        try:
+            excel = client.gencache.EnsureDispatch('Excel.Application')
+            wb = excel.Workbooks.Open(excelFilePath)
+            wb.SaveAs(excelFilePath[:-1], FileFormat=56)
+        finally:
+            wb.Close()
+            excel.Application.Quit()
+        return excelFilePath[:-1]
 
     # 获取Excel路径,并赋给变量工作目录
     def getExcelFilePath(self) -> str:
@@ -118,41 +139,30 @@ class DirPage():
         else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
             wsWorkSheetList = [i for i in excelSheetName if i != '目录']
 
+        if not self._EXCEL_FLAG:
+            excelFilePath = self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
+
         with open(excelFilePath, 'rb') as f:
-            if self._EXCEL_FLAG:
-                wb = openpyxl.load_workbook(f)
+            wb = openpyxl.load_workbook(f)
 
-                if '目录' not in excelSheetName:  # 建立空的目录sheet
-                    wb.create_sheet('目录', 0)
-                wb['目录'].delete_cols(1, 2)
-                wsList = wb['目录']
+            if '目录' not in excelSheetName:  # 建立空的目录sheet
+                wb.create_sheet('目录', 0)
+            wb['目录'].delete_cols(1, 2)
+            wsList = wb['目录']
 
-                rownum, colnum = 1, 1
-                wsList.cell(row=rownum, column=colnum, value='目 录')
+            rownum, colnum = 1, 1
+            wsList.cell(row=rownum, column=colnum, value='目 录')
 
-                for i in wsWorkSheetList:
-                    rownum += 1
-                    wsList.cell(row=rownum, column=colnum,
-                                value=i).font = self._FONT
-                    wsList.cell(row=rownum, column=colnum).hyperlink = Hyperlink(
-                        ref='', location='\'%s\'!A1' % i, tooltip=None, display='%s' % i, id=None)
+            for i in wsWorkSheetList:
+                rownum += 1
+                wsList.cell(row=rownum, column=colnum,
+                            value=i).font = self._FONT
+                wsList.cell(row=rownum, column=colnum).hyperlink = Hyperlink(
+                    ref='', location='\'%s\'!A1' % i, tooltip=None, display='%s' % i, id=None)
 
-                    wb[i]['A3'].font = self._FONT
-                    wb[i]['A3'].hyperlink = Hyperlink(
-                        ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
-                wb.save(excelFilePath)
-                self.refTabArray()
-                QMessageBox.information(self._MainWindow, '信息', '建立成功！')
-            else:
-                wbr = xlrd.open_workbook(file_contents=f.read())
-                wbw = copy(wbr)
-
-                if '目录' not in excelSheetName:  # 建立空的目录sheet
-                    wbw.add_sheet('目录')
-                wb['目录'].delete_cols(1, 2)
-                wsList = wbw.
-
-
-
-
-    #ws.write(1, 1, Formula(r'HYPERLINK("#sheet1!B2";"单元格的名字")'))
+                wb[i]['A3'].font = self._FONT
+                wb[i]['A3'].hyperlink = Hyperlink(
+                    ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
+            wb.save(excelFilePath)
+            self.refTabArray()
+            QMessageBox.information(self._MainWindow, '信息', '建立成功！')
