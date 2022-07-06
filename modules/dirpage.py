@@ -1,5 +1,5 @@
 from xlutils.copy import copy
-import modules.pyappui as pyappui
+import modules.appui as appui
 import openpyxl
 import xlrd
 from win32com import client
@@ -14,7 +14,7 @@ from py_test_tools import *
 
 
 class DirPage():
-    def __init__(self, MainWindow: QMainWindow, ui: pyappui.Ui_MainWindow) -> None:
+    def __init__(self, MainWindow: QMainWindow, ui: appui.Ui_MainWindow) -> None:
         self._EXCEL_FILE_DIR = './'  # 默认的工作目录
         self._EXCEL_FLAG = None  # excel文件类型的标识，1标识xlsx，0标识xls，None表示未取得excel文件
         self._FONT = Font(underline='single', color='FF0000FF')

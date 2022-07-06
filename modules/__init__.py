@@ -1,3 +1,3 @@
-from . pyappui import *
+from .appui import *
 from . rec_rc import *
-from . pyhomepage import *
+from .homepage import *

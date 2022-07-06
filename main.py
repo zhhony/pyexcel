@@ -2,19 +2,19 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from typing import *
-import modules.pydirpage as pydirpage
-import modules.pyhomepage as pyhomepage
-import modules.pyappui as pyappui
+import modules.dirpage as dirpage
+import modules.homepage as homepage
+import modules.appui as appui
 import sys
 
 # 主程序
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     MainWindow = QMainWindow()
-    ui = pyappui.Ui_MainWindow()
+    ui = appui.Ui_MainWindow()
 
-    dirPg = pydirpage.DirPage(MainWindow, ui)  # 定义dirPage窗口类，方便调用目录窗口的方法
-    homePg = pyhomepage.HomePage(MainWindow, ui)  # 定义dirHome窗口类，方便调用Home窗口的方法
+    dirPg = dirpage.DirPage(MainWindow, ui)  # 定义dirPage窗口类，方便调用目录窗口的方法
+    homePg = homepage.HomePage(MainWindow, ui)  # 定义dirHome窗口类，方便调用Home窗口的方法
 
     ui.setupUi(MainWindow)
     ui.stackedWidget.setCurrentIndex(0)  # 将'Home'页设置成stackedwidget的预展示页面
