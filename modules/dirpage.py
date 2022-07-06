@@ -34,12 +34,12 @@ class DirPage():
             self._EXCEL_FLAG = None
             return None
 
-    # xls转xlsx,输出转化完成后的文件路径
+    # xls转xlsxtemp,输出转化完成后的文件路径
     def transXlsToXlsx(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
             wbTemp = excel.Workbooks.Open(excelFilePath)
-            wbTemp.SaveAs(excelFilePath + "x", FileFormat=51)
+            wbTemp.SaveAs(excelFilePath + "xtemp", FileFormat=51)
         except Exception as e:
             print(e.args)
         finally:
@@ -47,13 +47,13 @@ class DirPage():
             excel.Application.Quit()
             excel.Quit
 
-    # xlsx转xls,输出转化完成后的文件路径
+    # xlsxtemp转xls,输出转化完成后的文件路径
     def transXlsxToXls(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
             excel.DisplayAlerts = False
             wb = excel.Workbooks.Open(excelFilePath)
-            wb.SaveAs(excelFilePath[:-1], FileFormat=56)
+            wb.SaveAs(excelFilePath[:-5], FileFormat=56)
         finally:
             wb.Close()
             excel.Application.Quit()
@@ -146,10 +146,8 @@ class DirPage():
                     ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
             wb.save(excelFilePath)
             wb.close()
-        self.refTabArray()
 
     # 定义openFile按钮的动作
-
     def cmdOpenExcelFile(self) -> None:
         excelFilePath = self.getExcelFilePath()  # 获取excel路径
         if excelFilePath != '':
@@ -176,9 +174,12 @@ class DirPage():
 
         if not self._EXCEL_FLAG:
             self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
-            excelFilePath = excelFilePath + 'x'
+            excelFilePath = excelFilePath + 'xtemp'
 
         self.Hyperlink(excelFilePath, excelSheetName, wsWorkSheetList)
 
         if not self._EXCEL_FLAG:
             self.transXlsxToXls(excelFilePath)  # 将文件转化为xls
+            Path(excelFilePath).unlink()
+        self.refTabArray()
+        QMessageBox.information(self._MainWindow, '信息', '建立成功！')
