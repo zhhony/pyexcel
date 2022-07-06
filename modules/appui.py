@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pyappui.ui'
+## Form generated from reading UI file 'appui.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.0
 ##
