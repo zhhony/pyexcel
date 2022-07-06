@@ -6,12 +6,8 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from pathlib import Path
-from typing import *
 from openpyxl.worksheet.hyperlink import Hyperlink
 from openpyxl.styles import Font
-from py_test_tools import *
-
-pycls()
 
 
 class DirPage():
