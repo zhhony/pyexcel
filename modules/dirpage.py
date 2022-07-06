@@ -30,7 +30,7 @@ class DirPage():
             self._EXCEL_FLAG = None
             return None
 
-    # xls转xlsxtemp,输出转化完成后的文件路径
+    # xls转xlsxtemp
     def transXlsToXlsx(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
@@ -43,7 +43,7 @@ class DirPage():
             excel.Application.Quit()
             excel.Quit
 
-    # xlsxtemp转xls,输出转化完成后的文件路径
+    # xlsxtemp转xls
     def transXlsxToXls(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
@@ -100,11 +100,11 @@ class DirPage():
             itemColumn += 1
 
     # 定义获取tableWidget控件选定内容的方法
-    def getTabArray(self) -> list:
+    def getTableWidgetArray(self) -> list:
         return [i.text() for i in self._ui.tableWidget.selectedItems()]
 
     # 定义刷新表格区域的方法
-    def refTabArray(self) -> None:
+    def refTableWidget(self) -> None:
         try:
             # 读取lineEdit存储的excel路径
             excelFilePath = str(Path(self._ui.lineEdit.text()))
@@ -118,7 +118,7 @@ class DirPage():
             pass
 
     # 建立超链接
-    def Hyperlink(self, excelFilePath: str, excelSheetName: list, wsWorkSheetList: list):
+    def setHyperlink(self, excelFilePath: str, excelSheetName: list, wsWorkSheetList: list):
         with open(excelFilePath, 'rb') as f:
             wb = openpyxl.load_workbook(f)
 
@@ -150,7 +150,7 @@ class DirPage():
             self._ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
         else:
             return None
-        self.refTabArray()
+        self.refTableWidget()
 
     # 定义commitFileCMD按钮的动作
     def cmdCommitFile(self) -> None:
@@ -163,8 +163,8 @@ class DirPage():
         excelSheetName = self.getExcelSheetName(excelFilePath)  # 读取sheet列表
 
         wsWorkSheetList = []  # 存储需要建立目录的sheet列表
-        if self.getTabArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
-            wsWorkSheetList = self.getTabArray()
+        if self.getTableWidgetArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
+            wsWorkSheetList = self.getTableWidgetArray()
         else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
             wsWorkSheetList = [i for i in excelSheetName if i != '目录']
 
@@ -172,10 +172,10 @@ class DirPage():
             self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
             excelFilePath = excelFilePath + 'xtemp'
 
-        self.Hyperlink(excelFilePath, excelSheetName, wsWorkSheetList)
+        self.setHyperlink(excelFilePath, excelSheetName, wsWorkSheetList)
 
         if not self._EXCEL_FLAG:
             self.transXlsxToXls(excelFilePath)  # 将文件转化为xls
             Path(excelFilePath).unlink()
-        self.refTabArray()
+        self.refTableWidget()
         QMessageBox.information(self._MainWindow, '信息', '建立成功！')
