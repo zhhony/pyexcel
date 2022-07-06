@@ -1,8 +1,7 @@
-from xlutils.copy import copy
 import modules.appui as appui
 import openpyxl
 import xlrd
-from win32com import client
+import win32com.client as client
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -11,6 +10,8 @@ from typing import *
 from openpyxl.worksheet.hyperlink import Hyperlink
 from openpyxl.styles import Font
 from py_test_tools import *
+
+pycls()
 
 
 class DirPage():
@@ -34,26 +35,28 @@ class DirPage():
             return None
 
     # xls转xlsx,输出转化完成后的文件路径
-    def transXlsToXlsx(self, excelFilePath: str) -> str:
+    def transXlsToXlsx(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
-            wb = excel.Workbooks.Open(excelFilePath)
-            wb.SaveAs(excelFilePath + "x", FileFormat=51)
+            wbTemp = excel.Workbooks.Open(excelFilePath)
+            wbTemp.SaveAs(excelFilePath + "x", FileFormat=51)
+        except Exception as e:
+            print(e.args)
         finally:
-            wb.Close()
+            wbTemp.Close(True)
             excel.Application.Quit()
-        return excelFilePath + "x"
+            excel.Quit
 
     # xlsx转xls,输出转化完成后的文件路径
-    def transXlsxToXls(self, excelFilePath: str) -> str:
+    def transXlsxToXls(self, excelFilePath: str) -> None:
         try:
             excel = client.gencache.EnsureDispatch('Excel.Application')
+            excel.DisplayAlerts = False
             wb = excel.Workbooks.Open(excelFilePath)
             wb.SaveAs(excelFilePath[:-1], FileFormat=56)
         finally:
             wb.Close()
             excel.Application.Quit()
-        return excelFilePath[:-1]
 
     # 获取Excel路径,并赋给变量工作目录
     def getExcelFilePath(self) -> str:
@@ -71,9 +74,13 @@ class DirPage():
         with open(path, 'rb') as f:
             if self._EXCEL_FLAG:
                 wb = openpyxl.load_workbook(f)
-                return [i.title for i in wb]
+                excelSheetName = [i.title for i in wb]
+                wb.close()
             else:
-                return xlrd.open_workbook(file_contents=f.read()).sheet_names()
+                wb = xlrd.open_workbook(file_contents=f.read(), on_demand=True)
+                excelSheetName = wb.sheet_names()
+                wb.release_resources()
+        return excelSheetName
 
     # 定义tableWidget控件的排版方法，此控件9*6
     def gridTableWidget(self, list: list) -> None:
@@ -103,45 +110,19 @@ class DirPage():
     # 定义刷新表格区域的方法
     def refTabArray(self) -> None:
         try:
-            excelFilePath = self._ui.lineEdit.text()  # 读取lineEdit存储的excel路径
+            # 读取lineEdit存储的excel路径
+            excelFilePath = str(Path(self._ui.lineEdit.text()))
             wbSheetsList = self.getExcelSheetName(excelFilePath)
             self._ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
             # 将sheet清单写入tableWidget
             self.gridTableWidget(wbSheetsList)
-        except:
-            print(wbSheetsList)
-            print('刷新表格出现问题')
+        except Exception as e:
+            print(e)
         finally:
             pass
 
-    # 定义openFile按钮的动作
-    def cmdOpenExcelFile(self) -> None:
-        excelFilePath = self.getExcelFilePath()  # 获取excel路径
-        if excelFilePath != '':
-            self._ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
-        else:
-            return None
-        self.refTabArray()
-
-    # 定义commitFileCMD按钮的动作
-    def cmdCommitFile(self) -> None:
-
-        if self._EXCEL_FLAG == None:
-            print("未选择任何excel对象")
-            return None
-
-        excelFilePath = self._ui.lineEdit.text()  # 读取lineEdit存储的excel路径
-        excelSheetName = self.getExcelSheetName(excelFilePath)  # 读取sheet列表
-
-        wsWorkSheetList = []  # 存储需要建立目录的sheet列表
-        if self.getTabArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
-            wsWorkSheetList = self.getTabArray()
-        else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
-            wsWorkSheetList = [i for i in excelSheetName if i != '目录']
-
-        if not self._EXCEL_FLAG:
-            excelFilePath = self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
-
+    # 建立超链接
+    def Hyperlink(self, excelFilePath: str, excelSheetName: list, wsWorkSheetList: list):
         with open(excelFilePath, 'rb') as f:
             wb = openpyxl.load_workbook(f)
 
@@ -164,5 +145,40 @@ class DirPage():
                 wb[i]['A3'].hyperlink = Hyperlink(
                     ref='', location='\'目录\'!A1', tooltip=None, display='目录', id=None)
             wb.save(excelFilePath)
-            self.refTabArray()
-            QMessageBox.information(self._MainWindow, '信息', '建立成功！')
+            wb.close()
+        self.refTabArray()
+
+    # 定义openFile按钮的动作
+
+    def cmdOpenExcelFile(self) -> None:
+        excelFilePath = self.getExcelFilePath()  # 获取excel路径
+        if excelFilePath != '':
+            self._ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
+        else:
+            return None
+        self.refTabArray()
+
+    # 定义commitFileCMD按钮的动作
+    def cmdCommitFile(self) -> None:
+        if self._EXCEL_FLAG == None:
+            print("未选择任何excel对象")
+            return None
+
+        excelFilePath = str(Path(self._ui.lineEdit.text())
+                            )  # 读取lineEdit存储的excel路径
+        excelSheetName = self.getExcelSheetName(excelFilePath)  # 读取sheet列表
+
+        wsWorkSheetList = []  # 存储需要建立目录的sheet列表
+        if self.getTabArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
+            wsWorkSheetList = self.getTabArray()
+        else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
+            wsWorkSheetList = [i for i in excelSheetName if i != '目录']
+
+        if not self._EXCEL_FLAG:
+            self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
+            excelFilePath = excelFilePath + 'x'
+
+        self.Hyperlink(excelFilePath, excelSheetName, wsWorkSheetList)
+
+        if not self._EXCEL_FLAG:
+            self.transXlsxToXls(excelFilePath)  # 将文件转化为xls
