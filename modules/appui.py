@@ -27,14 +27,20 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(850, 602)
+        font = QFont()
+        font.setFamilies([u"Consolas"])
+        font.setPointSize(9)
+        font.setKerning(False)
+        font.setStyleStrategy(QFont.PreferAntialias)
+        MainWindow.setFont(font)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
-        font = QFont()
-        font.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setItalic(False)
-        self.StyleSheet.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font1.setPointSize(10)
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.StyleSheet.setFont(font1)
         self.StyleSheet.setStyleSheet(u"QWidget {\n"
 "    color: rgb(221, 221, 221);\n"
 "    font: 10pt \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
@@ -332,14 +338,14 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.toggleLeftBox.sizePolicy().hasHeightForWidth())
         self.toggleLeftBox.setSizePolicy(sizePolicy)
         self.toggleLeftBox.setMinimumSize(QSize(0, 45))
-        font1 = QFont()
-        font1.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
-        font1.setPointSize(10)
-        font1.setBold(False)
-        font1.setItalic(False)
-        font1.setKerning(True)
-        font1.setStyleStrategy(QFont.PreferAntialias)
-        self.toggleLeftBox.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font2.setPointSize(10)
+        font2.setBold(False)
+        font2.setItalic(False)
+        font2.setKerning(True)
+        font2.setStyleStrategy(QFont.PreferAntialias)
+        self.toggleLeftBox.setFont(font2)
         self.toggleLeftBox.setCursor(QCursor(Qt.PointingHandCursor))
         self.toggleLeftBox.setStyleSheet(u"")
         self.toggleLeftBox.setAutoDefault(False)
@@ -471,6 +477,14 @@ class Ui_MainWindow(object):
         self.lineEdit = QLineEdit(self.DirBuidTop)
         self.lineEdit.setObjectName(u"lineEdit")
         self.lineEdit.setMinimumSize(QSize(0, 30))
+        font3 = QFont()
+        font3.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font3.setPointSize(8)
+        font3.setBold(False)
+        font3.setItalic(False)
+        font3.setKerning(False)
+        font3.setStyleStrategy(QFont.PreferAntialias)
+        self.lineEdit.setFont(font3)
         self.lineEdit.setCursor(QCursor(Qt.IBeamCursor))
         self.lineEdit.setStyleSheet(u"#DirBuid .QLineEdit {\n"
 "    font: 8pt \"\u5fae\u8f6f\u96c5\u9ed1\";\n"
@@ -559,6 +573,14 @@ class Ui_MainWindow(object):
         self.tableWidget.setItem(0, 0, __qtablewidgetitem10)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setMaximumSize(QSize(16777215, 330))
+        font4 = QFont()
+        font4.setFamilies([u"\u5fae\u8f6f\u96c5\u9ed1"])
+        font4.setPointSize(10)
+        font4.setBold(False)
+        font4.setItalic(False)
+        font4.setKerning(False)
+        font4.setStyleStrategy(QFont.PreferDefault)
+        self.tableWidget.setFont(font4)
         self.tableWidget.setStyleSheet(u"QTableWidget {\n"
 "    background-color: transparent;\n"
 "    padding: 10px;\n"
@@ -745,12 +767,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.productlab = QLabel(self.RightUndBar)
         self.productlab.setObjectName(u"productlab")
+        font5 = QFont()
+        font5.setFamilies([u"Segoe UI"])
+        font5.setPointSize(8)
+        font5.setBold(False)
+        font5.setItalic(False)
+        font5.setKerning(False)
+        self.productlab.setFont(font5)
         self.productlab.setStyleSheet(u"")
 
         self.horizontalLayout_6.addWidget(self.productlab)
 
         self.versionlab = QLabel(self.RightUndBar)
         self.versionlab.setObjectName(u"versionlab")
+        self.versionlab.setFont(font5)
         self.versionlab.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.horizontalLayout_6.addWidget(self.versionlab)
@@ -769,14 +799,14 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toggleLeftBox.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Excel\u4f34\u4fa3", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"HOME", None))
         self.btn_dir.setText(QCoreApplication.translate("MainWindow", u"\u5efa\u7acb\u76ee\u5f55", None))
         self.btn_2.setText(QCoreApplication.translate("MainWindow", u"\u529f\u80fd2", None))
