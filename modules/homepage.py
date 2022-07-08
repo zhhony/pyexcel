@@ -3,7 +3,6 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from typing import *
-from py_test_tools import *
 
 
 class HomePage():
