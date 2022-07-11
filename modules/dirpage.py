@@ -1,7 +1,9 @@
+from cv2 import findNonZero
 import modules.appui as appui
 import openpyxl
 import xlrd
 import win32com.client as client
+import threading
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -17,6 +19,9 @@ class DirPage():
         self._FONT = Font(underline='single', color='FF0000FF')
         self._MainWindow = MainWindow
         self._ui = ui
+        self.lock = threading.Lock()
+        self.excelSheetName = []
+        self.excelFilePath = None
 
     # 判断excel是否为xlsx文件
     def isXlsx(self, excelFilePath: str) -> bool:
@@ -70,13 +75,13 @@ class DirPage():
         with open(path, 'rb') as f:
             if self._EXCEL_FLAG:
                 wb = openpyxl.load_workbook(f)
-                excelSheetName = [i.title for i in wb]
+                self.excelSheetName = [i.title for i in wb]
                 wb.close()
+
             else:
                 wb = xlrd.open_workbook(file_contents=f.read(), on_demand=True)
-                excelSheetName = wb.sheet_names()
+                self.excelSheetName = wb.sheet_names()
                 wb.release_resources()
-        return excelSheetName
 
     # 定义tableWidget控件的排版方法，此控件9*6
     def gridTableWidget(self, list: list) -> None:
@@ -107,18 +112,21 @@ class DirPage():
     def refTableWidget(self) -> None:
         try:
             # 读取lineEdit存储的excel路径
-            excelFilePath = str(Path(self._ui.lineEdit.text()))
-            wbSheetsList = self.getExcelSheetName(excelFilePath)
-            self._ui.tableWidget.setColumnCount(len(wbSheetsList)//9+1)
+            self.getExcelSheetName(self.excelFilePath)
+            self._ui.tableWidget.setColumnCount(len(self.excelSheetName)//9+1)
             # 将sheet清单写入tableWidget
-            self.gridTableWidget(wbSheetsList)
+            self.gridTableWidget(self.excelSheetName)
         except Exception as e:
             print(e)
         finally:
             pass
 
     # 建立超链接
-    def setHyperlink(self, excelFilePath: str, excelSheetName: list, wsWorkSheetList: list):
+    def setHyperlink(self, excelFilePath, excelSheetName, wsWorkSheetList):
+        if not self._EXCEL_FLAG:
+            self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
+            excelFilePath = excelFilePath + 'xtemp'
+
         with open(excelFilePath, 'rb') as f:
             wb = openpyxl.load_workbook(f)
 
@@ -143,14 +151,34 @@ class DirPage():
             wb.save(excelFilePath)
             wb.close()
 
+        if not self._EXCEL_FLAG:
+            self.transXlsxToXls(excelFilePath)  # 将文件转化为xls
+            Path(excelFilePath).unlink()
+
     # 定义openFile按钮的动作
     def cmdOpenExcelFile(self) -> None:
-        excelFilePath = self.getExcelFilePath()  # 获取excel路径
-        if excelFilePath != '':
-            self._ui.lineEdit.setText(excelFilePath)  # 将excel路径写入lineEdit
-        else:
-            return None
-        self.refTableWidget()
+        self.excelFilePath = self.getExcelFilePath()  # 获取excel路径
+        try:
+            if self.excelFilePath != '':
+                self._ui.lineEdit.setText(
+                    self.excelFilePath)  # 将excel路径写入lineEdit
+
+                # 起一个子线程获取清单
+                Th1 = threading.Thread(target=self.getExcelSheetName, args=(
+                    self.excelFilePath,), name='读取sheet清单')
+                Th1.start()
+
+                # 主线程阻塞
+                self._MainWindow.setCursor(QCursor(Qt.BusyCursor))
+                print('a')
+                Th1.join()
+                print('b')
+            else:
+                return None
+
+        finally:
+            self.refTableWidget()
+            self._MainWindow.setCursor(QCursor(Qt.ArrowCursor))
 
     # 定义commitFileCMD按钮的动作
     def cmdCommitFile(self) -> None:
@@ -158,24 +186,23 @@ class DirPage():
             print("未选择任何excel对象")
             return None
 
-        excelFilePath = str(Path(self._ui.lineEdit.text())
-                            )  # 读取lineEdit存储的excel路径
-        excelSheetName = self.getExcelSheetName(excelFilePath)  # 读取sheet列表
+        self.lock.acquire()
 
-        wsWorkSheetList = []  # 存储需要建立目录的sheet列表
-        if self.getTableWidgetArray() != []:  # 优先把用户选择的sheet赋值给wsWorkSheetList
-            wsWorkSheetList = self.getTableWidgetArray()
-        else:  # 如果用户没有选择，就把所有的sheet(名称!=目录)都赋值给wsWorkSheetList
-            wsWorkSheetList = [i for i in excelSheetName if i != '目录']
+        wsWorkSheetList = self.getTableWidgetArray() if self.getTableWidgetArray() != [
+        ] else [i for i in self.excelSheetName if i != '目录']  # 存储需要建立目录的sheet列表,优先把用户选择的sheet赋值给wsWorkSheetList
 
-        if not self._EXCEL_FLAG:
-            self.transXlsToXlsx(excelFilePath)  # 将文件转化为xlsx
-            excelFilePath = excelFilePath + 'xtemp'
+        try:
+            # 起一个子线程建立超链接
+            Th1 = threading.Thread(target=self.setHyperlink, args=(
+                self.excelFilePath, self.excelSheetName, wsWorkSheetList), name='超链接建立线程')
+            Th1.start()
 
-        self.setHyperlink(excelFilePath, excelSheetName, wsWorkSheetList)
+            # 主线程阻塞
+            self._MainWindow.setCursor(QCursor(Qt.BusyCursor))
+            Th1.join()
+            self.refTableWidget()
+            self._MainWindow.setCursor(QCursor(Qt.ArrowCursor))
 
-        if not self._EXCEL_FLAG:
-            self.transXlsxToXls(excelFilePath)  # 将文件转化为xls
-            Path(excelFilePath).unlink()
-        self.refTableWidget()
-        QMessageBox.information(self._MainWindow, '信息', '建立成功！')
+        finally:
+            self.lock.release()
+            QMessageBox.information(self._MainWindow, '信息', '建立成功！')
