@@ -1,4 +1,3 @@
-from cv2 import findNonZero
 import modules.appui as appui
 import openpyxl
 import xlrd
@@ -164,15 +163,14 @@ class DirPage():
                     self.excelFilePath)  # 将excel路径写入lineEdit
 
                 # 起一个子线程获取清单
-                Th1 = threading.Thread(target=self.getExcelSheetName, args=(
+                Th2 = threading.Thread(target=self.getExcelSheetName, args=(
                     self.excelFilePath,), name='读取sheet清单')
-                Th1.start()
+                Th2.start()
 
                 # 主线程阻塞
-                self._MainWindow.setCursor(QCursor(Qt.BusyCursor))
-                print('a')
-                Th1.join()
-                print('b')
+                self._MainWindow.setCursor(QCursor(Qt.CrossCursor))
+                Th2.join()
+                self._MainWindow.setCursor(QCursor(Qt.ArrowCursor))
             else:
                 return None
 
@@ -186,8 +184,6 @@ class DirPage():
             print("未选择任何excel对象")
             return None
 
-        self.lock.acquire()
-
         wsWorkSheetList = self.getTableWidgetArray() if self.getTableWidgetArray() != [
         ] else [i for i in self.excelSheetName if i != '目录']  # 存储需要建立目录的sheet列表,优先把用户选择的sheet赋值给wsWorkSheetList
 
@@ -198,11 +194,10 @@ class DirPage():
             Th1.start()
 
             # 主线程阻塞
-            self._MainWindow.setCursor(QCursor(Qt.BusyCursor))
+            self._MainWindow.setCursor(QCursor(Qt.WaitCursor))
             Th1.join()
             self.refTableWidget()
             self._MainWindow.setCursor(QCursor(Qt.ArrowCursor))
 
         finally:
-            self.lock.release()
             QMessageBox.information(self._MainWindow, '信息', '建立成功！')
